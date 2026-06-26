@@ -1,10 +1,8 @@
 # Ecoepidemiology of probable acute/subacute paracoccidioidomycosis in Brazil
 
-> Publication-ready outputs from the ecological modeling workflow for probable acute/subacute paracoccidioidomycosis (PCM) in Brazil.
-
 ## Overview
 
-This repository folder contains publication-ready tables, figures, maps, captions, and manuscript text generated from a validated analytical workflow. The analysis modeled the spatial distribution and future climatic suitability of **probable acute/subacute paracoccidioidomycosis (PCM)** in Brazil using municipality-level administrative health records, environmental predictors, and future climate projections.
+This repository folder contains tables, figures, maps, captions, and manuscript text generated from a validated analytical workflow. The analysis modeled the spatial distribution and future climatic suitability of **probable acute/subacute paracoccidioidomycosis (PCM)** in Brazil using municipality-level administrative health records, environmental predictors, and future climate projections.
 
 **Important interpretation note:** all current and future values shown here are **model-predicted annualized suitability rates per 100,000 inhabitants**. They should not be interpreted as observed incidence or deterministic forecasts of future case counts.
 
