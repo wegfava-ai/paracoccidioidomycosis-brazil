@@ -1,0 +1,28 @@
+scenario_period_label,change_category_detailed,municipalities,median_future_rate_annual_100k,median_future_minus_current_rate_annual_100k,median_percent_change_from_current
+SSP245 | 2041-2060,Large decrease,1,0.0442,-0.0486,-52.3927
+SSP245 | 2041-2060,Moderate decrease,25,0.0263,-0.0051,-15.757
+SSP245 | 2041-2060,Stable,136,0.0273,8e-04,4.1873
+SSP245 | 2041-2060,Moderate increase,2284,0.0323,0.0082,35.5496
+SSP245 | 2041-2060,Large increase,2146,0.0607,0.0241,65.3782
+SSP245 | 2041-2060,Very large increase,693,0.1332,0.0781,132.7872
+SSP245 | 2041-2060,Missing comparison,285,,,
+SSP245 | 2061-2080,Large decrease,1,0.0442,-0.0486,-52.3881
+SSP245 | 2061-2080,Moderate decrease,16,0.0224,-0.0074,-22.0718
+SSP245 | 2061-2080,Stable,85,0.0251,5e-04,3.8174
+SSP245 | 2061-2080,Moderate increase,1494,0.0331,0.0086,38.9981
+SSP245 | 2061-2080,Large increase,2691,0.0527,0.022,69.295
+SSP245 | 2061-2080,Very large increase,998,0.1304,0.0746,131.6601
+SSP245 | 2061-2080,Missing comparison,285,,,
+SSP585 | 2041-2060,Large decrease,1,0.0029,-0.003,-50.9995
+SSP585 | 2041-2060,Moderate decrease,16,0.0205,-0.005,-21.004
+SSP585 | 2041-2060,Stable,71,0.0183,3e-04,2.9813
+SSP585 | 2041-2060,Moderate increase,1298,0.0262,0.007,37.2252
+SSP585 | 2041-2060,Large increase,2309,0.0555,0.0235,69.7272
+SSP585 | 2041-2060,Very large increase,1590,0.1239,0.073,134.7385
+SSP585 | 2041-2060,Missing comparison,285,,,
+SSP585 | 2061-2080,Moderate decrease,5,0.034,-0.0103,-25.5122
+SSP585 | 2061-2080,Stable,11,0.0243,6e-04,3.2597
+SSP585 | 2061-2080,Moderate increase,295,0.0155,0.0042,39.8221
+SSP585 | 2061-2080,Large increase,1550,0.0394,0.0172,79.8735
+SSP585 | 2061-2080,Very large increase,3424,0.116,0.0696,159.3868
+SSP585 | 2061-2080,Missing comparison,285,,,

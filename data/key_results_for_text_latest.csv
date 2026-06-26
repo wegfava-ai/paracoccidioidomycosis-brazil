@@ -1,0 +1,10 @@
+result_group,metric,value
+model_selection,BIC_selected_projection_model,M3; BIC=8825.693; predictors=15
+model_selection,AIC_supported_full_model,M6; AIC=8458.998; predictors=68
+current_suitability,current_median_rate_100k,0.0320
+future_suitability,highest_scenario_period,SSP585 | 2061-2080
+future_suitability,highest_scenario_median_future_rate_100k,0.0797
+future_suitability,highest_scenario_median_percent_change,119.8%
+regional_pattern,top_region_highest_scenario,North; change=0.1382
+state_pattern,top_state_highest_scenario,PI; change=0.2570
+change_categories,very_large_increase_municipalities_highest_scenario,"3,424"

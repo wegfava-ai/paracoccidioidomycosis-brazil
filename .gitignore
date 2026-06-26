@@ -1,0 +1,12 @@
+# Local temporary files
+*.tmp
+*.bak
+*.log
+.Rhistory
+.RData
+.Rproj.user/
+
+# System files
+Thumbs.db
+.DS_Store
+

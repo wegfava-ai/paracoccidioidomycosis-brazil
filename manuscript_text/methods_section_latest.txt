@@ -1,0 +1,44 @@
+Methods section draft
+Generated at: 2026-06-26 15:11:46.225866
+
+
+Methods
+=======
+
+
+Study design and outcome definition
+-----------------------------------
+
+We conducted an ecological modeling study to describe the spatial distribution and future climatic suitability of probable acute/subacute paracoccidioidomycosis (PCM) in Brazil. The analytical unit was the municipality, and the main retrospective modeling period was 1998-2024. Probable acute/subacute PCM was defined using national administrative health records with ICD-10 code B41 and an age restriction of ≤20 years, used as a conservative proxy for the acute/subacute clinical form. Hospitalization data were obtained from the Hospital Information System of the Brazilian Unified Health System, and mortality data were obtained from the Mortality Information System. The main integrated analysis combined SIH hospitalizations and SIM deaths within the common retrospective period.
+
+
+Population denominators and spatial framework
+---------------------------------------------
+
+Municipality-year population denominators were used to standardize disease counts and to define the population offset in count models. Municipal codes were standardized to six-digit IBGE municipality identifiers. The spatial framework was based on the official Brazilian municipality layer, harmonized to the municipality code used in the epidemiological and environmental datasets. For current and future suitability projections, predictions were produced for all Brazilian municipalities with complete predictor information.
+
+
+Environmental, socioeconomic, land-use, and temporal predictors
+---------------------------------------------------------------
+
+Current environmental predictors included WorldClim BIOCLIM variables, elevation, and soil attributes. Soil attributes were obtained from SoilGrids using municipality centroid-based extraction, and therefore represent point-based municipal predictors rather than polygonal zonal means. Land-use information was summarized from MapBiomas municipality-level land-cover classes. Socioeconomic indicators were derived from the Atlas of Human Development in Brazil, using the 2010 Municipal Human Development Index and nearest-census values for municipality-year analyses. ENSO-related temporal predictors were prepared from monthly Oceanic Niño Index values and summarized into annual and lagged indices. Because ENSO is a temporal global exposure, the same annual ENSO values were assigned to all municipalities in a given year.
+
+
+Retrospective count modeling
+----------------------------
+
+We fitted retrospective municipality-year count models for probable acute/subacute PCM using Poisson, quasi-Poisson, and negative binomial specifications. The population denominator entered the models as an offset term, log(population), rather than as a predictor. Candidate model blocks represented increasingly complex sets of predictors, ranging from climate-only models to models including climate, elevation, soil, land use, socioeconomic variables, and ENSO indices. To ensure direct comparability across candidate models, the main model-selection analysis was performed on a common complete-case municipality-year sample. Model selection considered Akaike information criterion (AIC), Bayesian information criterion (BIC), Pearson overdispersion, and retrospective prediction diagnostics. The M3 climate-soil-elevation negative binomial model was retained as the parsimonious model for spatial current and future projections because it was selected by BIC and used variables suitable for static spatial and future climate projection. The M6 negative binomial model, which included ENSO and additional predictors, was retained as the AIC-supported full retrospective model but was not used as the primary future projection model because ENSO was not projected under the future climate scenarios.
+
+
+Current and future suitability projections
+------------------------------------------
+
+Current suitability was projected to all Brazilian municipalities using the M3 negative binomial model. For suitability mapping, the population offset was fixed at 100,000 inhabitants so that model outputs could be interpreted as model-predicted annualized suitability rates per 100,000 inhabitants. Future suitability was projected by replacing the current BIOCLIM predictors used in M3 with CMIP6 ensemble future BIOCLIM predictors. Soil and elevation predictors were held constant in future projections. Future projections were generated for SSP245 and SSP585 in the 2041-2060 and 2061-2080 periods. Future-minus-current differences, future-to-current ratios, and percent changes from the current baseline were calculated for each municipality and scenario-period.
+
+
+Interpretation of predicted values
+----------------------------------
+
+All current and future values should be interpreted as model-predicted suitability or baseline risk under the specified environmental conditions. They should not be interpreted as observed incidence or as deterministic forecasts of future case counts. Maps and tables emphasize relative spatial patterns, future-minus-current change, and municipalities or regions with higher modeled suitability.
+
+

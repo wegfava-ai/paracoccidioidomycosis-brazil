@@ -1,0 +1,136 @@
+Manuscript-ready text generated from validated modeling outputs
+Project: Ecoepidemiology of acute/subacute paracoccidioidomycosis in Brazil
+Generated at: 2026-06-26 15:11:46.196365
+Script: 22_generate_methods_and_results_text.R
+Version: corrected_v4_infer_change_categories
+
+
+Methods
+=======
+
+
+Study design and outcome definition
+-----------------------------------
+
+We conducted an ecological modeling study to describe the spatial distribution and future climatic suitability of probable acute/subacute paracoccidioidomycosis (PCM) in Brazil. The analytical unit was the municipality, and the main retrospective modeling period was 1998-2024. Probable acute/subacute PCM was defined using national administrative health records with ICD-10 code B41 and an age restriction of ≤20 years, used as a conservative proxy for the acute/subacute clinical form. Hospitalization data were obtained from the Hospital Information System of the Brazilian Unified Health System, and mortality data were obtained from the Mortality Information System. The main integrated analysis combined SIH hospitalizations and SIM deaths within the common retrospective period.
+
+
+Population denominators and spatial framework
+---------------------------------------------
+
+Municipality-year population denominators were used to standardize disease counts and to define the population offset in count models. Municipal codes were standardized to six-digit IBGE municipality identifiers. The spatial framework was based on the official Brazilian municipality layer, harmonized to the municipality code used in the epidemiological and environmental datasets. For current and future suitability projections, predictions were produced for all Brazilian municipalities with complete predictor information.
+
+
+Environmental, socioeconomic, land-use, and temporal predictors
+---------------------------------------------------------------
+
+Current environmental predictors included WorldClim BIOCLIM variables, elevation, and soil attributes. Soil attributes were obtained from SoilGrids using municipality centroid-based extraction, and therefore represent point-based municipal predictors rather than polygonal zonal means. Land-use information was summarized from MapBiomas municipality-level land-cover classes. Socioeconomic indicators were derived from the Atlas of Human Development in Brazil, using the 2010 Municipal Human Development Index and nearest-census values for municipality-year analyses. ENSO-related temporal predictors were prepared from monthly Oceanic Niño Index values and summarized into annual and lagged indices. Because ENSO is a temporal global exposure, the same annual ENSO values were assigned to all municipalities in a given year.
+
+
+Retrospective count modeling
+----------------------------
+
+We fitted retrospective municipality-year count models for probable acute/subacute PCM using Poisson, quasi-Poisson, and negative binomial specifications. The population denominator entered the models as an offset term, log(population), rather than as a predictor. Candidate model blocks represented increasingly complex sets of predictors, ranging from climate-only models to models including climate, elevation, soil, land use, socioeconomic variables, and ENSO indices. To ensure direct comparability across candidate models, the main model-selection analysis was performed on a common complete-case municipality-year sample. Model selection considered Akaike information criterion (AIC), Bayesian information criterion (BIC), Pearson overdispersion, and retrospective prediction diagnostics. The M3 climate-soil-elevation negative binomial model was retained as the parsimonious model for spatial current and future projections because it was selected by BIC and used variables suitable for static spatial and future climate projection. The M6 negative binomial model, which included ENSO and additional predictors, was retained as the AIC-supported full retrospective model but was not used as the primary future projection model because ENSO was not projected under the future climate scenarios.
+
+
+Current and future suitability projections
+------------------------------------------
+
+Current suitability was projected to all Brazilian municipalities using the M3 negative binomial model. For suitability mapping, the population offset was fixed at 100,000 inhabitants so that model outputs could be interpreted as model-predicted annualized suitability rates per 100,000 inhabitants. Future suitability was projected by replacing the current BIOCLIM predictors used in M3 with CMIP6 ensemble future BIOCLIM predictors. Soil and elevation predictors were held constant in future projections. Future projections were generated for SSP245 and SSP585 in the 2041-2060 and 2061-2080 periods. Future-minus-current differences, future-to-current ratios, and percent changes from the current baseline were calculated for each municipality and scenario-period.
+
+
+Interpretation of predicted values
+----------------------------------
+
+All current and future values should be interpreted as model-predicted suitability or baseline risk under the specified environmental conditions. They should not be interpreted as observed incidence or as deterministic forecasts of future case counts. Maps and tables emphasize relative spatial patterns, future-minus-current change, and municipalities or regions with higher modeled suitability.
+
+
+Results
+=======
+
+
+Retrospective model selection
+-----------------------------
+
+The common complete-case retrospective modeling sample included 60,345 municipality-year observations and 1,017 events of probable acute/subacute PCM. The BIC-supported parsimonious model was M3, a negative binomial model including climate, soil, and elevation predictors. This model included 15 predictors and had an AIC of 8672.560 and a BIC of 8825.693 . The AIC-supported full retrospective model was M6, a negative binomial model including ENSO and additional predictor groups. M6 included 68 predictors and had an AIC of 8458.998 and a BIC of 9080.539 . M3 was therefore used as the primary model for current and future suitability projections, while M6 was retained as a complementary full retrospective model.
+
+
+Retrospective prediction performance
+------------------------------------
+
+The M3 model predicted 1197.1 events compared with 1,017 observed events in the common sample. The M6 model predicted 1025.0 events compared with the same observed total. Mean absolute error and root mean squared error were 0.0338 and 0.1689 for M3, and 0.0314 and 0.1598 for M6, respectively. Because the outcome was rare at the municipality-year level, observed-versus-predicted rank correlations were modest and were interpreted as complementary diagnostics rather than sole measures of model adequacy.
+
+
+Current predicted suitability
+-----------------------------
+
+Current suitability was projected for 5,570 Brazilian municipalities. Complete current predictions were obtained for 5,356 municipalities, while 214 municipalities lacked complete predictor information. The current median model-predicted suitability was 0.0320 per 100,000 inhabitants, with a mean of 0.0439 and a maximum of 0.3726 per 100,000.
+
+
+Future predicted suitability
+----------------------------
+
+Future suitability increased progressively across scenario-periods. SSP245 | 2041-2060 had a median predicted future suitability of 0.0523 per 100,000, corresponding to a median future-minus-current difference of 0.0178 per 100,000 and a median percent change of 52.8%. SSP245 | 2061-2080 had a median predicted future suitability of 0.0566 per 100,000, corresponding to a median future-minus-current difference of 0.0214 per 100,000 and a median percent change of 64.9%. SSP585 | 2041-2060 had a median predicted future suitability of 0.0603 per 100,000, corresponding to a median future-minus-current difference of 0.0255 per 100,000 and a median percent change of 71.8%. SSP585 | 2061-2080 had a median predicted future suitability of 0.0797 per 100,000, corresponding to a median future-minus-current difference of 0.0438 per 100,000 and a median percent change of 119.8%. The highest future suitability was observed under SSP585 | 2061-2080 , with a median predicted future suitability of 0.0797 per 100,000, a median future-minus-current difference of 0.0438 per 100,000, and a median percent increase of 119.8% . 
+
+
+Regional and state-level patterns
+---------------------------------
+
+Under SSP585 | 2061-2080, the largest regional median increase was observed in the North region (median future-minus-current difference, 0.1382 per 100,000; median percent change, 225.6%), followed by Central-West (0.0774 per 100,000), Southeast (0.0705 per 100,000), Northeast (0.0317 per 100,000), South (0.0108 per 100,000). At the state level under SSP585 | 2061-2080, the highest median future-minus-current increases were observed in PI (0.2570 per 100,000), RR (0.2474 per 100,000), TO (0.2289 per 100,000), MT (0.1897 per 100,000), RO (0.1698 per 100,000). These patterns indicate that projected suitability increases were not spatially uniform, with stronger increases concentrated in northern and central portions of Brazil, depending on the scenario-period.
+
+
+Municipality-level change categories and priority municipalities
+----------------------------------------------------------------
+
+Under SSP585 | 2061-2080 , 3,424 municipalities were classified as having a very large increase, 4,974 as having a large increase, and 295 as having a moderate increase in modeled suitability. Only 11 municipalities were classified as stable, and 5 municipalities showed moderate or large decreases. A total of 285 municipalities had missing comparison values. The highest-ranked priority municipalities under SSP585 | 2061-2080 included Itaúba (MT), Ipiranga do Norte (MT), Colíder (MT), Tabaporã (MT), Cláudia (MT), Porto Alegre do Norte (MT), Nova Santa Helena (MT), Novo Horizonte do Norte (MT), Novo Acordo (TO), Marcelândia (MT).
+
+
+Publication-ready outputs
+-------------------------
+
+Publication-ready tables, figures, and map files were generated from the validated modeling outputs. The main map set includes the current suitability map, future suitability maps for each scenario-period, and future-minus-current change maps for the most severe scenario. Supplementary maps include current suitability classes and additional change maps for the remaining scenario-periods.
+
+
+Suggested manuscript callouts
+=============================
+
+
+Tables
+------
+
+Table 1. Retrospective model selection.
+Table 2. Retrospective prediction performance.
+Table 3. Predictor group effects.
+Table 4. Current and future suitability summary.
+Table 5. Regional future suitability change.
+Table 6. State-level future suitability change under SSP585 | 2061-2080.
+Table 7. Municipality-level suitability change categories.
+Table 8. Priority municipalities under SSP585 | 2061-2080.
+
+
+Figures
+-------
+
+Figure 1. Current and future median suitability.
+Figure 2. Median future-minus-current suitability.
+Figure 3. Regional trajectories of future suitability change.
+Figure 4. Municipality-level change categories by scenario-period.
+Figure 5. State-level median change under SSP585 | 2061-2080.
+Figure 6. Priority municipalities under SSP585 | 2061-2080.
+
+
+Maps
+----
+
+Map 1. Current predicted suitability.
+Maps 2-5. Future predicted suitability under SSP245 and SSP585 for 2041-2060 and 2061-2080.
+Main change map. Future-minus-current suitability under SSP585 | 2061-2080.
+Main category map. Suitability change categories under SSP585 | 2061-2080.
+
+
+Suggested limitations paragraph
+===============================
+
+This study has limitations inherent to ecological analyses based on administrative health data. The definition of probable acute/subacute PCM relied on ICD-10 B41 records and an age-based proxy, which increases specificity for the acute/subacute form but does not replace clinical confirmation. Underreporting, diagnostic heterogeneity, and differences in healthcare access may influence the observed spatial distribution of records. Soil predictors were extracted from SoilGrids at municipality centroids, which may not capture within-municipality edaphic heterogeneity. Future projections assumed that soil and elevation remained constant and replaced only climate predictors with CMIP6 ensemble values. The projected values should therefore be interpreted as changes in environmental suitability or model-based baseline risk, not as deterministic forecasts of future incidence or case counts. Finally, the parsimonious M3 model was selected for projection because its predictors were suitable for static spatial and future climatic analyses, whereas the more complex M6 model included temporal ENSO predictors that were not projected under the future climate scenarios.
+
+

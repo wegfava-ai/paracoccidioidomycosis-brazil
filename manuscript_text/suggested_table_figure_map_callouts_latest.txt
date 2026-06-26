@@ -1,0 +1,38 @@
+
+Suggested manuscript callouts
+=============================
+
+
+Tables
+------
+
+Table 1. Retrospective model selection.
+Table 2. Retrospective prediction performance.
+Table 3. Predictor group effects.
+Table 4. Current and future suitability summary.
+Table 5. Regional future suitability change.
+Table 6. State-level future suitability change under SSP585 | 2061-2080.
+Table 7. Municipality-level suitability change categories.
+Table 8. Priority municipalities under SSP585 | 2061-2080.
+
+
+Figures
+-------
+
+Figure 1. Current and future median suitability.
+Figure 2. Median future-minus-current suitability.
+Figure 3. Regional trajectories of future suitability change.
+Figure 4. Municipality-level change categories by scenario-period.
+Figure 5. State-level median change under SSP585 | 2061-2080.
+Figure 6. Priority municipalities under SSP585 | 2061-2080.
+
+
+Maps
+----
+
+Map 1. Current predicted suitability.
+Maps 2-5. Future predicted suitability under SSP245 and SSP585 for 2041-2060 and 2061-2080.
+Main change map. Future-minus-current suitability under SSP585 | 2061-2080.
+Main category map. Suitability change categories under SSP585 | 2061-2080.
+
+

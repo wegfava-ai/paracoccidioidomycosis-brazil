@@ -1,0 +1,70 @@
+Map 1. Current predicted suitability
+------------------------------------
+Current model-predicted environmental suitability for probable acute/subacute paracoccidioidomycosis in Brazil. Values represent model-predicted annualized suitability rates per 100,000 inhabitants using the M3 climate-soil-elevation negative binomial model trained on 1998-2024 municipality-year data. The map should be interpreted as relative suitability, not observed incidence.
+Recommended use: main_or_supplementary
+
+Supplementary Map S1. Current suitability classes
+-------------------------------------------------
+Quantile-based classes of current model-predicted suitability for probable acute/subacute paracoccidioidomycosis. Classes summarize the distribution of current predicted suitability across Brazilian municipalities.
+Recommended use: supplementary
+
+Category Map 1. Suitability change categories: SSP245 | 2041-2060
+-----------------------------------------------------------------
+Municipality-level categories of future suitability change under SSP245 | 2041-2060. Categories are based on percent change relative to the current model-predicted baseline and should be interpreted as modeled suitability change, not confirmed future incidence.
+Recommended use: supplementary
+
+Category Map 2. Suitability change categories: SSP245 | 2061-2080
+-----------------------------------------------------------------
+Municipality-level categories of future suitability change under SSP245 | 2061-2080. Categories are based on percent change relative to the current model-predicted baseline and should be interpreted as modeled suitability change, not confirmed future incidence.
+Recommended use: supplementary
+
+Category Map 3. Suitability change categories: SSP585 | 2041-2060
+-----------------------------------------------------------------
+Municipality-level categories of future suitability change under SSP585 | 2041-2060. Categories are based on percent change relative to the current model-predicted baseline and should be interpreted as modeled suitability change, not confirmed future incidence.
+Recommended use: supplementary
+
+Category Map 4. Suitability change categories: SSP585 | 2061-2080
+-----------------------------------------------------------------
+Municipality-level categories of future suitability change under SSP585 | 2061-2080. Categories are based on percent change relative to the current model-predicted baseline and should be interpreted as modeled suitability change, not confirmed future incidence.
+Recommended use: main
+
+Change Map 1. Future-minus-current suitability: SSP245 | 2041-2060
+------------------------------------------------------------------
+Absolute future-minus-current change in model-predicted suitability for probable acute/subacute paracoccidioidomycosis under SSP245 | 2041-2060. Positive values indicate higher future suitability compared with the current baseline. Values are differences in model-predicted annualized suitability rates per 100,000 inhabitants.
+Recommended use: supplementary
+
+Change Map 2. Future-minus-current suitability: SSP245 | 2061-2080
+------------------------------------------------------------------
+Absolute future-minus-current change in model-predicted suitability for probable acute/subacute paracoccidioidomycosis under SSP245 | 2061-2080. Positive values indicate higher future suitability compared with the current baseline. Values are differences in model-predicted annualized suitability rates per 100,000 inhabitants.
+Recommended use: supplementary
+
+Change Map 3. Future-minus-current suitability: SSP585 | 2041-2060
+------------------------------------------------------------------
+Absolute future-minus-current change in model-predicted suitability for probable acute/subacute paracoccidioidomycosis under SSP585 | 2041-2060. Positive values indicate higher future suitability compared with the current baseline. Values are differences in model-predicted annualized suitability rates per 100,000 inhabitants.
+Recommended use: supplementary
+
+Change Map 4. Future-minus-current suitability: SSP585 | 2061-2080
+------------------------------------------------------------------
+Absolute future-minus-current change in model-predicted suitability for probable acute/subacute paracoccidioidomycosis under SSP585 | 2061-2080. Positive values indicate higher future suitability compared with the current baseline. Values are differences in model-predicted annualized suitability rates per 100,000 inhabitants.
+Recommended use: main
+
+Map 2. Future predicted suitability: SSP245 | 2041-2060
+-------------------------------------------------------
+Future model-predicted suitability for probable acute/subacute paracoccidioidomycosis under SSP245 | 2041-2060. Current BIOCLIM predictors were replaced with CMIP6 ensemble future predictors, while soil and elevation were held constant. Values are model-predicted annualized suitability rates per 100,000 inhabitants, not observed incidence.
+Recommended use: main_or_supplementary
+
+Map 3. Future predicted suitability: SSP245 | 2061-2080
+-------------------------------------------------------
+Future model-predicted suitability for probable acute/subacute paracoccidioidomycosis under SSP245 | 2061-2080. Current BIOCLIM predictors were replaced with CMIP6 ensemble future predictors, while soil and elevation were held constant. Values are model-predicted annualized suitability rates per 100,000 inhabitants, not observed incidence.
+Recommended use: main_or_supplementary
+
+Map 4. Future predicted suitability: SSP585 | 2041-2060
+-------------------------------------------------------
+Future model-predicted suitability for probable acute/subacute paracoccidioidomycosis under SSP585 | 2041-2060. Current BIOCLIM predictors were replaced with CMIP6 ensemble future predictors, while soil and elevation were held constant. Values are model-predicted annualized suitability rates per 100,000 inhabitants, not observed incidence.
+Recommended use: main_or_supplementary
+
+Map 5. Future predicted suitability: SSP585 | 2061-2080
+-------------------------------------------------------
+Future model-predicted suitability for probable acute/subacute paracoccidioidomycosis under SSP585 | 2061-2080. Current BIOCLIM predictors were replaced with CMIP6 ensemble future predictors, while soil and elevation were held constant. Values are model-predicted annualized suitability rates per 100,000 inhabitants, not observed incidence.
+Recommended use: main_or_supplementary
+

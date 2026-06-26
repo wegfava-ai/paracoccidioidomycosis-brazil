@@ -1,0 +1,50 @@
+Results section draft
+Generated at: 2026-06-26 15:11:46.253878
+
+
+Results
+=======
+
+
+Retrospective model selection
+-----------------------------
+
+The common complete-case retrospective modeling sample included 60,345 municipality-year observations and 1,017 events of probable acute/subacute PCM. The BIC-supported parsimonious model was M3, a negative binomial model including climate, soil, and elevation predictors. This model included 15 predictors and had an AIC of 8672.560 and a BIC of 8825.693 . The AIC-supported full retrospective model was M6, a negative binomial model including ENSO and additional predictor groups. M6 included 68 predictors and had an AIC of 8458.998 and a BIC of 9080.539 . M3 was therefore used as the primary model for current and future suitability projections, while M6 was retained as a complementary full retrospective model.
+
+
+Retrospective prediction performance
+------------------------------------
+
+The M3 model predicted 1197.1 events compared with 1,017 observed events in the common sample. The M6 model predicted 1025.0 events compared with the same observed total. Mean absolute error and root mean squared error were 0.0338 and 0.1689 for M3, and 0.0314 and 0.1598 for M6, respectively. Because the outcome was rare at the municipality-year level, observed-versus-predicted rank correlations were modest and were interpreted as complementary diagnostics rather than sole measures of model adequacy.
+
+
+Current predicted suitability
+-----------------------------
+
+Current suitability was projected for 5,570 Brazilian municipalities. Complete current predictions were obtained for 5,356 municipalities, while 214 municipalities lacked complete predictor information. The current median model-predicted suitability was 0.0320 per 100,000 inhabitants, with a mean of 0.0439 and a maximum of 0.3726 per 100,000.
+
+
+Future predicted suitability
+----------------------------
+
+Future suitability increased progressively across scenario-periods. SSP245 | 2041-2060 had a median predicted future suitability of 0.0523 per 100,000, corresponding to a median future-minus-current difference of 0.0178 per 100,000 and a median percent change of 52.8%. SSP245 | 2061-2080 had a median predicted future suitability of 0.0566 per 100,000, corresponding to a median future-minus-current difference of 0.0214 per 100,000 and a median percent change of 64.9%. SSP585 | 2041-2060 had a median predicted future suitability of 0.0603 per 100,000, corresponding to a median future-minus-current difference of 0.0255 per 100,000 and a median percent change of 71.8%. SSP585 | 2061-2080 had a median predicted future suitability of 0.0797 per 100,000, corresponding to a median future-minus-current difference of 0.0438 per 100,000 and a median percent change of 119.8%. The highest future suitability was observed under SSP585 | 2061-2080 , with a median predicted future suitability of 0.0797 per 100,000, a median future-minus-current difference of 0.0438 per 100,000, and a median percent increase of 119.8% . 
+
+
+Regional and state-level patterns
+---------------------------------
+
+Under SSP585 | 2061-2080, the largest regional median increase was observed in the North region (median future-minus-current difference, 0.1382 per 100,000; median percent change, 225.6%), followed by Central-West (0.0774 per 100,000), Southeast (0.0705 per 100,000), Northeast (0.0317 per 100,000), South (0.0108 per 100,000). At the state level under SSP585 | 2061-2080, the highest median future-minus-current increases were observed in PI (0.2570 per 100,000), RR (0.2474 per 100,000), TO (0.2289 per 100,000), MT (0.1897 per 100,000), RO (0.1698 per 100,000). These patterns indicate that projected suitability increases were not spatially uniform, with stronger increases concentrated in northern and central portions of Brazil, depending on the scenario-period.
+
+
+Municipality-level change categories and priority municipalities
+----------------------------------------------------------------
+
+Under SSP585 | 2061-2080 , 3,424 municipalities were classified as having a very large increase, 4,974 as having a large increase, and 295 as having a moderate increase in modeled suitability. Only 11 municipalities were classified as stable, and 5 municipalities showed moderate or large decreases. A total of 285 municipalities had missing comparison values. The highest-ranked priority municipalities under SSP585 | 2061-2080 included Itaúba (MT), Ipiranga do Norte (MT), Colíder (MT), Tabaporã (MT), Cláudia (MT), Porto Alegre do Norte (MT), Nova Santa Helena (MT), Novo Horizonte do Norte (MT), Novo Acordo (TO), Marcelândia (MT).
+
+
+Publication-ready outputs
+-------------------------
+
+Publication-ready tables, figures, and map files were generated from the validated modeling outputs. The main map set includes the current suitability map, future suitability maps for each scenario-period, and future-minus-current change maps for the most severe scenario. Supplementary maps include current suitability classes and additional change maps for the remaining scenario-periods.
+
+

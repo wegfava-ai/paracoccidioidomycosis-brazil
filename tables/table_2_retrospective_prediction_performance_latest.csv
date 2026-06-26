@@ -1,0 +1,3 @@
+publication_model_label,model_block,model_family,observed_events,predicted_events,mean_observed_count,mean_predicted_count
+"M3: climate, soil, and elevation",M3_climate_soil_elevation,negative_binomial,1017,1197.0525,0.0169,0.0198
+M6: full retrospective model including ENSO,M6_full_retro_with_enso,negative_binomial,1017,1025.0436,0.0169,0.017

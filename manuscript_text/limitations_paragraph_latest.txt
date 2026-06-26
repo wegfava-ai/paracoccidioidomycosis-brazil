@@ -1,0 +1,7 @@
+
+Suggested limitations paragraph
+===============================
+
+This study has limitations inherent to ecological analyses based on administrative health data. The definition of probable acute/subacute PCM relied on ICD-10 B41 records and an age-based proxy, which increases specificity for the acute/subacute form but does not replace clinical confirmation. Underreporting, diagnostic heterogeneity, and differences in healthcare access may influence the observed spatial distribution of records. Soil predictors were extracted from SoilGrids at municipality centroids, which may not capture within-municipality edaphic heterogeneity. Future projections assumed that soil and elevation remained constant and replaced only climate predictors with CMIP6 ensemble values. The projected values should therefore be interpreted as changes in environmental suitability or model-based baseline risk, not as deterministic forecasts of future incidence or case counts. Finally, the parsimonious M3 model was selected for projection because its predictors were suitable for static spatial and future climatic analyses, whereas the more complex M6 model included temporal ENSO predictors that were not projected under the future climate scenarios.
+
+
