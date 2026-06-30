@@ -1,0 +1,17 @@
+model_name,exposure_label,model_family,exposure_variable,years_used,total_cases_used,total_population_used
+continuous_ONI_current,"Annual mean ONI, same year",quasi_poisson,oni_current,27,1282,5282290517
+continuous_ONI_current,"Annual mean ONI, same year",negative_binomial,oni_current,27,1282,5282290517
+continuous_ONI_lag1y,"Annual mean ONI, 1-year lag",quasi_poisson,oni_lag1y,27,1282,5282290517
+continuous_ONI_lag1y,"Annual mean ONI, 1-year lag",negative_binomial,oni_lag1y,27,1282,5282290517
+continuous_ONI_lag2y,"Annual mean ONI, 2-year lag",quasi_poisson,oni_lag2y,27,1282,5282290517
+continuous_ONI_lag2y,"Annual mean ONI, 2-year lag",negative_binomial,oni_lag2y,27,1282,5282290517
+continuous_ONI_lag3y,"Annual mean ONI, 3-year lag",quasi_poisson,oni_lag3y,27,1282,5282290517
+continuous_ONI_lag3y,"Annual mean ONI, 3-year lag",negative_binomial,oni_lag3y,27,1282,5282290517
+phase_current,"ENSO phase, same year",quasi_poisson,enso_phase_current,27,1282,5282290517
+phase_current,"ENSO phase, same year",negative_binomial,enso_phase_current,27,1282,5282290517
+phase_lag1y,"ENSO phase, 1-year lag",quasi_poisson,enso_phase_lag1y,27,1282,5282290517
+phase_lag1y,"ENSO phase, 1-year lag",negative_binomial,enso_phase_lag1y,27,1282,5282290517
+phase_lag2y,"ENSO phase, 2-year lag",quasi_poisson,enso_phase_lag2y,27,1282,5282290517
+phase_lag2y,"ENSO phase, 2-year lag",negative_binomial,enso_phase_lag2y,27,1282,5282290517
+phase_lag3y,"ENSO phase, 3-year lag",quasi_poisson,enso_phase_lag3y,27,1282,5282290517
+phase_lag3y,"ENSO phase, 3-year lag",negative_binomial,enso_phase_lag3y,27,1282,5282290517

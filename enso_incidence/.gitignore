@@ -1,0 +1,20 @@
+# R temporary/session files
+.Rhistory
+.RData
+.Rproj.user/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Large/raw files should not be committed unless intentionally added
+raw/
+*.dbc
+*.dbf
+*.shp
+*.shx
+*.prj
+*.cpg
+*.gpkg
+
+# Keep processed CSV/RDS files in this package only if intentionally reviewed

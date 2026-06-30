@@ -1,0 +1,3 @@
+input_name,file_path
+national_spatial_file,D:/DATASUS/pcm_acute_subacute_brazil/data_processed/spatial/pcm_municipality_spatial_main_year_1998_2024_latest.rds
+population_file,D:/DATASUS/data_raw/population/ibge_official_municipal_population_sources.rds

@@ -1,0 +1,2 @@
+population_file,population_file_found,population_candidates_evaluated,population_rows_used,population_municipalities_used,population_years_used,population_column_used,missing_population_before,missing_population_after,population_merge_performed,note
+D:/DATASUS/data_raw/population/ibge_official_municipal_population_sources.rds,TRUE,77,161471,5571,29,populacao,85791,60,TRUE,Population denominator was updated from the widest valid population candidate file.

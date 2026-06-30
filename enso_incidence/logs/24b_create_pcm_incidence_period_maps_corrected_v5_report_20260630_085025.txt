@@ -1,0 +1,308 @@
+============================================================
+PCM incidence period maps report
+Project: Ecoepidemiology of acute/subacute paracoccidioidomycosis in Brazil
+Generated at: 2026-06-30 08:52:19.997331 
+Script: 24b_create_pcm_incidence_period_maps.R
+Version: corrected_v5_safe_light_boundaries
+============================================================
+
+Purpose:
+Create national maps of annualized municipal incidence of probable acute/subacute PCM for the overall period and selected subperiods.
+
+Period definitions:
+                 period_label          period_id start_year end_year
+                       <char>             <char>      <num>    <num>
+1: Overall period | 1998-2024  overall_1998_2024       1998     2024
+2:       Period 1 | 1998-2004 period_1_1998_2004       1998     2004
+3:       Period 2 | 2005-2011 period_2_2005_2011       2005     2011
+4:       Period 3 | 2012-2018 period_3_2012_2018       2012     2018
+5:       Period 4 | 2019-2024 period_4_2019_2024       2019     2024
+
+
+Methodological note:
+Incidence is annualized within each period: sum of cases divided by summed population person-years multiplied by 100,000.
+The maps use the full national municipality-year spatial dataset when available.
+All maps include municipality fills, state borders, and the national Brazil border.
+Correction note: this version prioritizes pcm_records_under20_main as the main probable acute/subacute PCM outcome column.
+
+Input files:
+              input_name
+                  <char>
+1: national_spatial_file
+2:       population_file
+                                                                                                             file_path
+                                                                                                                <char>
+1: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/spatial/pcm_municipality_spatial_main_year_1998_2024_latest.rds
+2:                                       D:/DATASUS/data_raw/population/ibge_official_municipal_population_sources.rds
+
+
+Population merge status:
+                                                                 population_file population_file_found
+                                                                          <char>                <lgcl>
+1: D:/DATASUS/data_raw/population/ibge_official_municipal_population_sources.rds                  TRUE
+   population_candidates_evaluated population_rows_used population_municipalities_used population_years_used
+                             <int>                <int>                          <int>                 <int>
+1:                              77               161471                           5571                    29
+   population_column_used missing_population_before missing_population_after population_merge_performed
+                   <char>                     <int>                    <int>                     <lgcl>
+1:              populacao                     85791                       60                       TRUE
+                                                                                  note
+                                                                                <char>
+1: Population denominator was updated from the widest valid population candidate file.
+
+
+Population candidate evaluation, top 20 by content coverage:
+                                                                                                                                                       file_path
+                                                                                                                                                          <char>
+ 1:                                                                                D:/DATASUS/data_raw/population/ibge_official_municipal_population_sources.rds
+ 2:                                                       D:/DATASUS/pcm_acute_subacute_brazil/outputs/tables/06_population_raw_standardized_20260624_075112.csv
+ 3:                             D:/DATASUS/pcm_acute_subacute_brazil/outputs/tables/06_population_raw_standardized_selected_source_corrected_20260624_081014.csv
+ 4:                             D:/DATASUS/pcm_acute_subacute_brazil/outputs/tables/06_population_raw_standardized_selected_source_corrected_20260624_081724.csv
+ 5:                                                                     D:/DATASUS/data_raw/population/ibge_official_municipal_population_sources_downloaded.rds
+ 6:                                                                  D:/DATASUS/data_raw/population/ibge_official_municipal_population_sources_downloaded_v3.rds
+ 7:                                               D:/DATASUS/pcm_acute_subacute_brazil/data_processed/population/municipality_population_denominators_latest.rds
+ 8:                       D:/DATASUS/pcm_acute_subacute_brazil/data_processed/modeling/pcm_epidemiological_database_municipality_year_with_population_latest.rds
+ 9:                                   D:/DATASUS/pcm_acute_subacute_brazil/data_processed/population/06_municipality_population_denominators_20260624_075112.rds
+10:                         D:/DATASUS/pcm_acute_subacute_brazil/data_processed/population/06_municipality_population_denominators_corrected_20260624_081014.rds
+11:                         D:/DATASUS/pcm_acute_subacute_brazil/data_processed/population/06_municipality_population_denominators_corrected_20260624_081724.rds
+12:               D:/DATASUS/pcm_acute_subacute_brazil/data_processed/modeling/pcm_epidemiological_database_main_integrated_1998_2024_with_population_latest.rds
+13:                  D:/DATASUS/pcm_acute_subacute_brazil/data_processed/modeling/pcm_epidemiological_database_sih_centered_1998_2025_with_population_latest.rds
+14:           D:/DATASUS/pcm_acute_subacute_brazil/data_processed/modeling/06_pcm_epidemiological_database_municipality_year_with_population_20260624_075112.rds
+15: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/modeling/06_pcm_epidemiological_database_municipality_year_with_population_corrected_20260624_081014.rds
+16: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/modeling/06_pcm_epidemiological_database_municipality_year_with_population_corrected_20260624_081724.rds
+17:                    D:/DATASUS/pcm_acute_subacute_brazil/outputs/tables/06_pcm_epidemiological_database_municipality_year_with_population_20260624_075112.csv
+18:          D:/DATASUS/pcm_acute_subacute_brazil/outputs/tables/06_pcm_epidemiological_database_municipality_year_with_population_corrected_20260624_081014.csv
+19:          D:/DATASUS/pcm_acute_subacute_brazil/outputs/tables/06_pcm_epidemiological_database_municipality_year_with_population_corrected_20260624_081724.csv
+20:   D:/DATASUS/pcm_acute_subacute_brazil/data_processed/modeling/06_pcm_epidemiological_database_main_integrated_1998_2024_with_population_20260624_075112.rds
+                                                                                                                                                       file_path
+    readable has_required_columns year_column municipality_column population_column rows_raw rows_valid
+      <lgcl>               <lgcl>      <char>              <char>            <char>    <int>      <int>
+ 1:     TRUE                 TRUE         ano    codigo_municipio         populacao   306405     161471
+ 2:     TRUE                 TRUE        year municipality_code_6  population_total   434404     155901
+ 3:     TRUE                 TRUE        year municipality_code_6  population_total   155901     155901
+ 4:     TRUE                 TRUE        year municipality_code_6  population_total   155901     155901
+ 5:     TRUE                 TRUE        year   municipality_code        population   170577     138041
+ 6:     TRUE                 TRUE        year   municipality_code        population   116908     116908
+ 7:     TRUE                 TRUE        year municipality_code_6  population_total    72450      66992
+ 8:     TRUE                 TRUE        year municipality_code_6  population_total    72450      66992
+ 9:     TRUE                 TRUE        year municipality_code_6  population_total    72450      66992
+10:     TRUE                 TRUE        year municipality_code_6  population_total    72450      66992
+11:     TRUE                 TRUE        year municipality_code_6  population_total    72450      66992
+12:     TRUE                 TRUE        year municipality_code_6  population_total    65205      64599
+13:     TRUE                 TRUE        year municipality_code_6  population_total    67620      66992
+14:     TRUE                 TRUE        year municipality_code_6  population_total    72450      66992
+15:     TRUE                 TRUE        year municipality_code_6  population_total    72450      66992
+16:     TRUE                 TRUE        year municipality_code_6  population_total    72450      66992
+17:     TRUE                 TRUE        year municipality_code_6  population_total    72450      66992
+18:     TRUE                 TRUE        year municipality_code_6  population_total    72450      66992
+19:     TRUE                 TRUE        year municipality_code_6  population_total    72450      66992
+20:     TRUE                 TRUE        year municipality_code_6  population_total    65205      64599
+    readable has_required_columns year_column municipality_column population_column rows_raw rows_valid
+    rows_in_target_period municipality_year_pairs municipalities years min_year max_year
+                    <int>                   <int>          <int> <int>    <int>    <int>
+ 1:                150330                  150330           5570    27     1998     2024
+ 2:                150330                  150330           5570    27     1998     2024
+ 3:                150330                  150330           5570    27     1998     2024
+ 4:                150330                  150330           5570    27     1998     2024
+ 5:                127979                  127979           5570    23     2000     2024
+ 6:                111337                  111337           5570    20     2001     2024
+ 7:                 64599                   64599           2393    27     1998     2024
+ 8:                 64599                   64599           2393    27     1998     2024
+ 9:                 64599                   64599           2393    27     1998     2024
+10:                 64599                   64599           2393    27     1998     2024
+11:                 64599                   64599           2393    27     1998     2024
+12:                 64599                   64599           2393    27     1998     2024
+13:                 64599                   64599           2393    27     1998     2024
+14:                 64599                   64599           2393    27     1998     2024
+15:                 64599                   64599           2393    27     1998     2024
+16:                 64599                   64599           2393    27     1998     2024
+17:                 64599                   64599           2393    27     1998     2024
+18:                 64599                   64599           2393    27     1998     2024
+19:                 64599                   64599           2393    27     1998     2024
+20:                 64599                   64599           2393    27     1998     2024
+    rows_in_target_period municipality_year_pairs municipalities years min_year max_year
+    total_population_target_period content_score  issue
+                             <num>         <num> <char>
+ 1:                     5282290517  150335570345   <NA>
+ 2:                    12884847990  150335570300   <NA>
+ 3:                     5282290517  150335570300   <NA>
+ 4:                     5282290517  150335570300   <NA>
+ 5:                     4486793119  127984570305   <NA>
+ 6:                     3922138491  111342570275   <NA>
+ 7:                     4089102528   64601393355   <NA>
+ 8:                     4089102528   64601393350   <NA>
+ 9:                     4725601899   64601393335   <NA>
+10:                     4089102528   64601393335   <NA>
+11:                     4089102528   64601393335   <NA>
+12:                     4089102528   64601393335   <NA>
+13:                     4089102528   64601393335   <NA>
+14:                     4725601899   64601393330   <NA>
+15:                     4089102528   64601393330   <NA>
+16:                     4089102528   64601393330   <NA>
+17:                     4725601899   64601393325   <NA>
+18:                     4089102528   64601393325   <NA>
+19:                     4089102528   64601393325   <NA>
+20:                     4725601899   64601393315   <NA>
+    total_population_target_period content_score  issue
+
+
+Detected columns:
+Year column: year
+Municipality code column: municipality_code_6
+Municipality name column: municipality_name 
+UF column: uf_abbrev 
+State code column: state_code 
+Region column: region 
+Outcome column used as pcm_cases: pcm_records_under20_main 
+Population column originally found as population: population_total 
+Population file selected: D:/DATASUS/data_raw/population/ibge_official_municipal_population_sources.rds 
+Population missing before merge: 85791 
+Population missing after merge: 60 
+Boundary group column: state_code 
+Boundary source: local_light_state_layer 
+Boundary state file: D:/DATASUS/data_raw/spatial/BR_UF_2024/BR_UF_2024.shp 
+
+Spatial summary:
+National spatial rows: 150390 
+Municipality base rows: 5570 
+State boundary rows: 27 
+Boundary source: local_light_state_layer 
+Boundary state file: D:/DATASUS/data_raw/spatial/BR_UF_2024/BR_UF_2024.shp 
+Brazil boundary rows: 1 
+CRS: EPSG:4674 
+
+Period summary:
+Índice: <period_id>
+            period_id               period_label start_year end_year municipalities
+               <char>                     <char>      <num>    <num>          <int>
+1: period_1_1998_2004       Period 1 | 1998-2004       1998     2004           5570
+2:  overall_1998_2024 Overall period | 1998-2024       1998     2024           5570
+3: period_2_2005_2011       Period 2 | 2005-2011       2005     2011           5570
+4: period_3_2012_2018       Period 3 | 2012-2018       2012     2018           5570
+5: period_4_2019_2024       Period 4 | 2019-2024       2019     2024           5570
+   municipalities_with_valid_incidence municipalities_with_cases total_cases total_person_years
+                                 <int>                     <int>       <num>              <num>
+1:                                5565                       190         347         1277818217
+2:                                5570                       538        1282         5282290517
+3:                                5570                       193         334         1326071110
+4:                                5570                       183         304         1424435472
+5:                                5570                       164         297         1253965718
+   national_annualized_incidence_100k median_municipal_incidence_100k mean_municipal_incidence_100k
+                                <num>                           <num>                         <num>
+1:                         0.02715566                               0                    0.02726489
+2:                         0.02426977                               0                    0.02784825
+3:                         0.02518719                               0                    0.02935818
+4:                         0.02134179                               0                    0.02856765
+5:                         0.02368486                               0                    0.02579562
+   max_municipal_incidence_100k
+                          <num>
+1:                     4.085468
+2:                     2.447411
+3:                     8.030194
+4:                     9.620472
+5:                     6.591523
+
+
+Top municipalities by period:
+              period_id               period_label municipality_code_6        municipality_name uf_abbrev region
+                 <char>                     <char>              <char>                   <char>    <char> <char>
+  1:  overall_1998_2024 Overall period | 1998-2024              220535               João Costa      <NA>   <NA>
+  2:  overall_1998_2024 Overall period | 1998-2024              150125                  Bannach      <NA>   <NA>
+  3:  overall_1998_2024 Overall period | 1998-2024              521410              Mutunópolis      <NA>   <NA>
+  4:  overall_1998_2024 Overall period | 1998-2024              170360 Brasilândia do Tocantins      <NA>   <NA>
+  5:  overall_1998_2024 Overall period | 1998-2024              211285  Vila Nova dos Martírios      <NA>   <NA>
+ ---                                                                                                            
+121: period_4_2019_2024       Period 4 | 2019-2024              315015     Piedade de Caratinga      <NA>   <NA>
+122: period_4_2019_2024       Period 4 | 2019-2024              330450           Rio das Flores      <NA>   <NA>
+123: period_4_2019_2024       Period 4 | 2019-2024              311710   Conceição da Aparecida      <NA>   <NA>
+124: period_4_2019_2024       Period 4 | 2019-2024              314160                   Mercês      <NA>   <NA>
+125: period_4_2019_2024       Period 4 | 2019-2024              313350              Itapecerica      <NA>   <NA>
+     cases person_years annualized_incidence_100k years_in_period
+     <num>        <num>                     <num>           <int>
+  1:     2        81719                  2.447411              27
+  2:     2        94759                  2.110617              27
+  3:     2       103923                  1.924502              27
+  4:     1        56606                  1.766597              27
+  5:     5       290680                  1.720105              27
+ ---                                                             
+121:     1        52041                  1.921562               6
+122:     1        55201                  1.811561               6
+123:     1        62375                  1.603206               6
+124:     1        63627                  1.571660               6
+125:     2       128837                  1.552349               6
+
+
+Map log:
+                period_id               period_label start_year end_year                               map_type
+                   <char>                     <char>      <num>    <num>                                 <char>
+1:      overall_1998_2024 Overall period | 1998-2024       1998     2024              annualized_incidence_100k
+2:     period_1_1998_2004       Period 1 | 1998-2004       1998     2004              annualized_incidence_100k
+3:     period_2_2005_2011       Period 2 | 2005-2011       2005     2011              annualized_incidence_100k
+4:     period_3_2012_2018       Period 3 | 2012-2018       2012     2018              annualized_incidence_100k
+5:     period_4_2019_2024       Period 4 | 2019-2024       2019     2024              annualized_incidence_100k
+6: period_panel_1998_2024   Period panel | 1998-2024       1998     2024 annualized_incidence_100k_period_panel
+                                             border_layers
+                                                    <char>
+1: Safe light boundaries; source = local_light_state_layer
+2: Safe light boundaries; source = local_light_state_layer
+3: Safe light boundaries; source = local_light_state_layer
+4: Safe light boundaries; source = local_light_state_layer
+5: Safe light boundaries; source = local_light_state_layer
+6: Safe light boundaries; source = local_light_state_layer
+                                                                   map_stem
+                                                                     <char>
+1:      24b_pcm_annualized_incidence_100k_overall_1998_2024_20260630_085025
+2:     24b_pcm_annualized_incidence_100k_period_1_1998_2004_20260630_085025
+3:     24b_pcm_annualized_incidence_100k_period_2_2005_2011_20260630_085025
+4:     24b_pcm_annualized_incidence_100k_period_3_2012_2018_20260630_085025
+5:     24b_pcm_annualized_incidence_100k_period_4_2019_2024_20260630_085025
+6: 24b_pcm_annualized_incidence_100k_period_panel_1998_2024_20260630_085025
+                                                                                                                                                                 png_file
+                                                                                                                                                                   <char>
+1:      D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/pcm_incidence_period_maps/maps/24b_pcm_annualized_incidence_100k_overall_1998_2024_20260630_085025.png
+2:     D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/pcm_incidence_period_maps/maps/24b_pcm_annualized_incidence_100k_period_1_1998_2004_20260630_085025.png
+3:     D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/pcm_incidence_period_maps/maps/24b_pcm_annualized_incidence_100k_period_2_2005_2011_20260630_085025.png
+4:     D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/pcm_incidence_period_maps/maps/24b_pcm_annualized_incidence_100k_period_3_2012_2018_20260630_085025.png
+5:     D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/pcm_incidence_period_maps/maps/24b_pcm_annualized_incidence_100k_period_4_2019_2024_20260630_085025.png
+6: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/pcm_incidence_period_maps/maps/24b_pcm_annualized_incidence_100k_period_panel_1998_2024_20260630_085025.png
+                                                                                                                                                                 pdf_file
+                                                                                                                                                                   <char>
+1:      D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/pcm_incidence_period_maps/maps/24b_pcm_annualized_incidence_100k_overall_1998_2024_20260630_085025.pdf
+2:     D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/pcm_incidence_period_maps/maps/24b_pcm_annualized_incidence_100k_period_1_1998_2004_20260630_085025.pdf
+3:     D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/pcm_incidence_period_maps/maps/24b_pcm_annualized_incidence_100k_period_2_2005_2011_20260630_085025.pdf
+4:     D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/pcm_incidence_period_maps/maps/24b_pcm_annualized_incidence_100k_period_3_2012_2018_20260630_085025.pdf
+5:     D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/pcm_incidence_period_maps/maps/24b_pcm_annualized_incidence_100k_period_4_2019_2024_20260630_085025.pdf
+6: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/pcm_incidence_period_maps/maps/24b_pcm_annualized_incidence_100k_period_panel_1998_2024_20260630_085025.pdf
+                                                                                                                 png_file_outputs
+                                                                                                                           <char>
+1:      D:/DATASUS/pcm_acute_subacute_brazil/outputs/maps/24b_pcm_annualized_incidence_100k_overall_1998_2024_20260630_085025.png
+2:     D:/DATASUS/pcm_acute_subacute_brazil/outputs/maps/24b_pcm_annualized_incidence_100k_period_1_1998_2004_20260630_085025.png
+3:     D:/DATASUS/pcm_acute_subacute_brazil/outputs/maps/24b_pcm_annualized_incidence_100k_period_2_2005_2011_20260630_085025.png
+4:     D:/DATASUS/pcm_acute_subacute_brazil/outputs/maps/24b_pcm_annualized_incidence_100k_period_3_2012_2018_20260630_085025.png
+5:     D:/DATASUS/pcm_acute_subacute_brazil/outputs/maps/24b_pcm_annualized_incidence_100k_period_4_2019_2024_20260630_085025.png
+6: D:/DATASUS/pcm_acute_subacute_brazil/outputs/maps/24b_pcm_annualized_incidence_100k_period_panel_1998_2024_20260630_085025.png
+                                                                                                                 pdf_file_outputs
+                                                                                                                           <char>
+1:      D:/DATASUS/pcm_acute_subacute_brazil/outputs/maps/24b_pcm_annualized_incidence_100k_overall_1998_2024_20260630_085025.pdf
+2:     D:/DATASUS/pcm_acute_subacute_brazil/outputs/maps/24b_pcm_annualized_incidence_100k_period_1_1998_2004_20260630_085025.pdf
+3:     D:/DATASUS/pcm_acute_subacute_brazil/outputs/maps/24b_pcm_annualized_incidence_100k_period_2_2005_2011_20260630_085025.pdf
+4:     D:/DATASUS/pcm_acute_subacute_brazil/outputs/maps/24b_pcm_annualized_incidence_100k_period_3_2012_2018_20260630_085025.pdf
+5:     D:/DATASUS/pcm_acute_subacute_brazil/outputs/maps/24b_pcm_annualized_incidence_100k_period_4_2019_2024_20260630_085025.pdf
+6: D:/DATASUS/pcm_acute_subacute_brazil/outputs/maps/24b_pcm_annualized_incidence_100k_period_panel_1998_2024_20260630_085025.pdf
+
+
+Output files:
+Municipal incidence table: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/pcm_incidence_period_maps/tables/pcm_municipal_annualized_incidence_by_period_latest.csv 
+Period summary: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/pcm_incidence_period_maps/tables/pcm_incidence_period_summary_latest.csv 
+Top municipalities: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/pcm_incidence_period_maps/tables/top_municipal_incidence_by_period_latest.csv 
+Spatial GeoPackage latest: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/pcm_incidence_period_maps/data/pcm_incidence_period_maps_latest.gpkg 
+Map log: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/pcm_incidence_period_maps/tables/pcm_incidence_map_file_log_latest.csv 
+Map captions: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/pcm_incidence_period_maps/tables/pcm_incidence_map_captions_latest.csv 
+
+Output folders:
+Analysis folder: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/pcm_incidence_period_maps 
+Tables: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/pcm_incidence_period_maps/tables 
+Maps: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/pcm_incidence_period_maps/maps 
+Data: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/pcm_incidence_period_maps/data 
+General output tables: D:/DATASUS/pcm_acute_subacute_brazil/outputs/tables 
+General output maps: D:/DATASUS/pcm_acute_subacute_brazil/outputs/maps 

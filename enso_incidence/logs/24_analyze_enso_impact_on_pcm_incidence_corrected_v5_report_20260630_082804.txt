@@ -1,0 +1,1086 @@
+============================================================
+ENSO impact on national probable acute/subacute PCM incidence report
+Project: Ecoepidemiology of acute/subacute paracoccidioidomycosis in Brazil
+Generated at: 2026-06-30 08:28:39.309055 
+Script: 24_analyze_enso_impact_on_pcm_incidence.R
+Version: corrected_v5_wide_ibge_population_search
+============================================================
+
+Purpose:
+Analyze the association between El Niño/ENSO and annual national incidence of probable acute/subacute PCM using the available integrated record period.
+
+Primary analytical period:
+1998 - 2024 
+
+ONI plot period:
+1996 - 2025 
+
+Correction relative to v1:
+The v1 analysis used the final modeling dataset with 2,415 municipalities.
+This corrected v5 analysis uses the full national municipality-year spatial layer and searches broadly for the most complete IBGE municipal population table before calculating annual national incidence.
+This version fixes the national outcome-column detection by prioritizing pcm_records_under20_main, selects the widest available IBGE municipal population file by content coverage, and adds a publication-style Annual mean Oceanic Niño Index plot.
+
+Methodological note:
+The integrated SIM + SIH outcome uses the common period available for both systems.
+ENSO is a year-level exposure; therefore, the primary analysis is national annual rather than municipality-year independent modeling.
+Counts are modeled with a population offset and a linear year term.
+The analysis is exploratory and should not be interpreted as causal proof.
+
+Input files:
+                 input_name
+                     <char>
+1:    national_dataset_file
+2: restricted_modeling_file
+3:           enso_year_file
+4:          population_file
+                                                                                                                              file_path
+                                                                                                                                 <char>
+1:                  D:/DATASUS/pcm_acute_subacute_brazil/data_processed/spatial/pcm_municipality_spatial_main_year_1998_2024_latest.rds
+2: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/final_modeling/pcm_final_municipality_year_modeling_dataset_1998_2024_latest.rds
+3:                                        D:/DATASUS/pcm_acute_subacute_brazil/data_processed/enso/oni_modeling_year_indices_latest.rds
+4:                                                        D:/DATASUS/data_raw/population/ibge_official_municipal_population_sources.rds
+
+
+Population merge status:
+                                                                 population_file population_file_found
+                                                                          <char>                <lgcl>
+1: D:/DATASUS/data_raw/population/ibge_official_municipal_population_sources.rds                  TRUE
+   population_candidates_evaluated population_rows_raw population_rows_used population_municipalities_used
+                             <int>               <int>                <int>                          <int>
+1:                              66              306405               161471                           5571
+   population_years_used population_column_used population_merge_performed national_missing_population_before
+                   <int>                 <char>                     <lgcl>                              <int>
+1:                    29              populacao                       TRUE                              85791
+   national_missing_population_after
+                               <int>
+1:                                60
+                                                                                  note
+                                                                                <char>
+1: Population denominator was updated from the widest valid population candidate file.
+
+
+Population candidate evaluation, top 20 by content coverage:
+                                                                                                                                                       file_path
+                                                                                                                                                          <char>
+ 1:                                                                                D:/DATASUS/data_raw/population/ibge_official_municipal_population_sources.rds
+ 2:                                                       D:/DATASUS/pcm_acute_subacute_brazil/outputs/tables/06_population_raw_standardized_20260624_075112.csv
+ 3:                             D:/DATASUS/pcm_acute_subacute_brazil/outputs/tables/06_population_raw_standardized_selected_source_corrected_20260624_081014.csv
+ 4:                             D:/DATASUS/pcm_acute_subacute_brazil/outputs/tables/06_population_raw_standardized_selected_source_corrected_20260624_081724.csv
+ 5:                                                                     D:/DATASUS/data_raw/population/ibge_official_municipal_population_sources_downloaded.rds
+ 6:                                                                  D:/DATASUS/data_raw/population/ibge_official_municipal_population_sources_downloaded_v3.rds
+ 7:                                               D:/DATASUS/pcm_acute_subacute_brazil/data_processed/population/municipality_population_denominators_latest.rds
+ 8:                       D:/DATASUS/pcm_acute_subacute_brazil/data_processed/modeling/pcm_epidemiological_database_municipality_year_with_population_latest.rds
+ 9:                                   D:/DATASUS/pcm_acute_subacute_brazil/data_processed/population/06_municipality_population_denominators_20260624_075112.rds
+10:                         D:/DATASUS/pcm_acute_subacute_brazil/data_processed/population/06_municipality_population_denominators_corrected_20260624_081014.rds
+11:                         D:/DATASUS/pcm_acute_subacute_brazil/data_processed/population/06_municipality_population_denominators_corrected_20260624_081724.rds
+12:               D:/DATASUS/pcm_acute_subacute_brazil/data_processed/modeling/pcm_epidemiological_database_main_integrated_1998_2024_with_population_latest.rds
+13:                  D:/DATASUS/pcm_acute_subacute_brazil/data_processed/modeling/pcm_epidemiological_database_sih_centered_1998_2025_with_population_latest.rds
+14:           D:/DATASUS/pcm_acute_subacute_brazil/data_processed/modeling/06_pcm_epidemiological_database_municipality_year_with_population_20260624_075112.rds
+15: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/modeling/06_pcm_epidemiological_database_municipality_year_with_population_corrected_20260624_081014.rds
+16: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/modeling/06_pcm_epidemiological_database_municipality_year_with_population_corrected_20260624_081724.rds
+17:                    D:/DATASUS/pcm_acute_subacute_brazil/outputs/tables/06_pcm_epidemiological_database_municipality_year_with_population_20260624_075112.csv
+18:          D:/DATASUS/pcm_acute_subacute_brazil/outputs/tables/06_pcm_epidemiological_database_municipality_year_with_population_corrected_20260624_081014.csv
+19:          D:/DATASUS/pcm_acute_subacute_brazil/outputs/tables/06_pcm_epidemiological_database_municipality_year_with_population_corrected_20260624_081724.csv
+20:   D:/DATASUS/pcm_acute_subacute_brazil/data_processed/modeling/06_pcm_epidemiological_database_main_integrated_1998_2024_with_population_20260624_075112.rds
+                                                                                                                                                       file_path
+    readable has_required_columns year_column municipality_column population_column rows_raw rows_valid
+      <lgcl>               <lgcl>      <char>              <char>            <char>    <int>      <int>
+ 1:     TRUE                 TRUE         ano    codigo_municipio         populacao   306405     161471
+ 2:     TRUE                 TRUE        year municipality_code_6  population_total   434404     155901
+ 3:     TRUE                 TRUE        year municipality_code_6  population_total   155901     155901
+ 4:     TRUE                 TRUE        year municipality_code_6  population_total   155901     155901
+ 5:     TRUE                 TRUE        year   municipality_code        population   170577     138041
+ 6:     TRUE                 TRUE        year   municipality_code        population   116908     116908
+ 7:     TRUE                 TRUE        year municipality_code_6  population_total    72450      66992
+ 8:     TRUE                 TRUE        year municipality_code_6  population_total    72450      66992
+ 9:     TRUE                 TRUE        year municipality_code_6  population_total    72450      66992
+10:     TRUE                 TRUE        year municipality_code_6  population_total    72450      66992
+11:     TRUE                 TRUE        year municipality_code_6  population_total    72450      66992
+12:     TRUE                 TRUE        year municipality_code_6  population_total    65205      64599
+13:     TRUE                 TRUE        year municipality_code_6  population_total    67620      66992
+14:     TRUE                 TRUE        year municipality_code_6  population_total    72450      66992
+15:     TRUE                 TRUE        year municipality_code_6  population_total    72450      66992
+16:     TRUE                 TRUE        year municipality_code_6  population_total    72450      66992
+17:     TRUE                 TRUE        year municipality_code_6  population_total    72450      66992
+18:     TRUE                 TRUE        year municipality_code_6  population_total    72450      66992
+19:     TRUE                 TRUE        year municipality_code_6  population_total    72450      66992
+20:     TRUE                 TRUE        year municipality_code_6  population_total    65205      64599
+    readable has_required_columns year_column municipality_column population_column rows_raw rows_valid
+    rows_in_target_period municipality_year_pairs municipalities years min_year max_year
+                    <int>                   <int>          <int> <int>    <int>    <int>
+ 1:                150330                  150330           5570    27     1998     2024
+ 2:                150330                  150330           5570    27     1998     2024
+ 3:                150330                  150330           5570    27     1998     2024
+ 4:                150330                  150330           5570    27     1998     2024
+ 5:                127979                  127979           5570    23     2000     2024
+ 6:                111337                  111337           5570    20     2001     2024
+ 7:                 64599                   64599           2393    27     1998     2024
+ 8:                 64599                   64599           2393    27     1998     2024
+ 9:                 64599                   64599           2393    27     1998     2024
+10:                 64599                   64599           2393    27     1998     2024
+11:                 64599                   64599           2393    27     1998     2024
+12:                 64599                   64599           2393    27     1998     2024
+13:                 64599                   64599           2393    27     1998     2024
+14:                 64599                   64599           2393    27     1998     2024
+15:                 64599                   64599           2393    27     1998     2024
+16:                 64599                   64599           2393    27     1998     2024
+17:                 64599                   64599           2393    27     1998     2024
+18:                 64599                   64599           2393    27     1998     2024
+19:                 64599                   64599           2393    27     1998     2024
+20:                 64599                   64599           2393    27     1998     2024
+    rows_in_target_period municipality_year_pairs municipalities years min_year max_year
+    total_population_target_period content_score  issue
+                             <num>         <num> <char>
+ 1:                     5282290517  150335570345   <NA>
+ 2:                    12884847990  150335570300   <NA>
+ 3:                     5282290517  150335570300   <NA>
+ 4:                     5282290517  150335570300   <NA>
+ 5:                     4486793119  127984570305   <NA>
+ 6:                     3922138491  111342570275   <NA>
+ 7:                     4089102528   64601393355   <NA>
+ 8:                     4089102528   64601393350   <NA>
+ 9:                     4725601899   64601393335   <NA>
+10:                     4089102528   64601393335   <NA>
+11:                     4089102528   64601393335   <NA>
+12:                     4089102528   64601393335   <NA>
+13:                     4089102528   64601393335   <NA>
+14:                     4725601899   64601393330   <NA>
+15:                     4089102528   64601393330   <NA>
+16:                     4089102528   64601393330   <NA>
+17:                     4725601899   64601393325   <NA>
+18:                     4089102528   64601393325   <NA>
+19:                     4089102528   64601393325   <NA>
+20:                     4725601899   64601393315   <NA>
+    total_population_target_period content_score  issue
+
+
+Detected columns from national dataset:
+Year column: year
+Municipality column: municipality_code_6
+Outcome column used as pcm_cases: pcm_records_under20_main 
+Population column used as population: population_total 
+Current ONI column: enso_oni_mean 
+Lag 1 ONI column: enso_oni_mean_lag1y 
+Lag 2 ONI column: enso_oni_mean_lag2y 
+Lag 3 ONI column: enso_oni_mean_lag3y 
+
+Annual national summary:
+                         analysis_frame years first_year last_year total_cases mean_annual_cases
+                                 <char> <int>      <int>     <int>       <num>             <num>
+1: full_national_municipality_year_grid    27       1998      2024        1282          47.48148
+   median_annual_cases total_population_person_years mean_annual_incidence_100k median_annual_incidence_100k
+                 <num>                         <num>                      <num>                        <num>
+1:                  45                    5282290517                 0.02429796                    0.0241146
+   min_annual_incidence_100k max_annual_incidence_100k mean_municipalities_per_year total_missing_population_rows
+                       <num>                     <num>                        <num>                         <int>
+1:                0.01528837                 0.0482292                         5570                            60
+
+
+Restricted modeling-grid sensitivity summary:
+                         analysis_frame years first_year last_year total_cases mean_annual_cases
+                                 <char> <int>      <int>     <int>       <num>             <num>
+1: restricted_modeling_grid_sensitivity    27       1998      2024        1283          47.51852
+   median_annual_cases total_population_person_years mean_annual_incidence_100k median_annual_incidence_100k
+                 <num>                         <num>                      <num>                        <num>
+1:                  45                    4089102528                 0.03142089                    0.0312065
+   min_annual_incidence_100k max_annual_incidence_100k mean_municipalities_per_year
+                       <num>                     <num>                        <num>
+1:                 0.0197472                  0.062413                         2415
+
+
+Annual national dataset:
+Chave: <year>
+     year cases population municipalities  rows event_municipality_years missing_population_rows incidence_100k
+    <int> <num>      <num>          <int> <int>                    <int>                   <int>          <num>
+ 1:  1998    92  190755799           5570  5570                       60                       5     0.04822920
+ 2:  1999    54  190755799           5570  5570                       34                       5     0.02830844
+ 3:  2000    32  190755799           5570  5570                       27                       5     0.01677537
+ 4:  2001    34  172409661           5570  5570                       24                       5     0.01972047
+ 5:  2002    45  174656795           5570  5570                       32                       5     0.02576481
+ 6:  2003    45  176895272           5570  5570                       40                       5     0.02543878
+ 7:  2004    45  181589092           5570  5570                       34                       5     0.02478122
+ 8:  2005    29  184192332           5570  5570                       23                       5     0.01574441
+ 9:  2006    36  186778630           5570  5570                       33                       5     0.01927415
+10:  2007    46  190755799           5570  5570                       34                       5     0.02411460
+11:  2008    62  189612823           5570  5570                       49                       5     0.03269821
+12:  2009    39  191480630           5570  5570                       35                       5     0.02036760
+13:  2010    67  190813704           5570  5570                       47                       0     0.03511278
+14:  2011    55  192437192           5570  5570                       38                       0     0.02858075
+15:  2012    31  193946886           5570  5570                       27                       0     0.01598376
+16:  2013    37  201032714           5570  5570                       32                       0     0.01840496
+17:  2014    31  202768562           5570  5570                       27                       0     0.01528837
+18:  2015    52  204450049           5570  5570                       36                       0     0.02543409
+19:  2016    45  206081432           5570  5570                       36                       0     0.02183603
+20:  2017    52  207660929           5570  5570                       44                       0     0.02504082
+21:  2018    56  208494900           5570  5570                       43                       0     0.02685917
+22:  2019    49  210147125           5570  5570                       34                       0     0.02331700
+23:  2020    42  211755692           5570  5570                       32                       0     0.01983418
+24:  2021    35  213317639           5570  5570                       29                       0     0.01640746
+25:  2022    42  203080756           5570  5570                       30                       0     0.02068143
+26:  2023    62  203080756           5570  5570                       40                       0     0.03052973
+27:  2024    67  212583750           5570  5570                       45                       0     0.03151699
+     year cases population municipalities  rows event_municipality_years missing_population_rows incidence_100k
+    oni_current   oni_lag1y   oni_lag2y   oni_lag3y enso_phase_plot enso_phase_current enso_phase_lag1y
+          <num>       <num>       <num>       <num>          <fctr>             <fctr>           <fctr>
+ 1: -0.10424242  1.20848485 -0.47515152 -0.18848485         NEUTRAL            Neutral          El Nino
+ 2: -1.24303030 -0.10424242  1.20848485 -0.47515152         LA_NINA            La Nina          Neutral
+ 3: -0.84757576 -1.24303030 -0.10424242  1.20848485         LA_NINA            La Nina          La Nina
+ 4: -0.31181818 -0.84757576 -1.24303030 -0.10424242         NEUTRAL            Neutral          La Nina
+ 5:  0.64939394 -0.31181818 -0.84757576 -1.24303030         EL_NINO            El Nino          Neutral
+ 6:  0.29575758  0.64939394 -0.31181818 -0.84757576         NEUTRAL            Neutral          El Nino
+ 7:  0.47242424  0.29575758  0.64939394 -0.31181818         NEUTRAL            Neutral          Neutral
+ 8:  0.01909091  0.47242424  0.29575758  0.64939394         NEUTRAL            Neutral          Neutral
+ 9:  0.09272727  0.01909091  0.47242424  0.29575758         NEUTRAL            Neutral          Neutral
+10: -0.62878788  0.09272727  0.01909091  0.47242424         LA_NINA            La Nina          Neutral
+11: -0.77727273 -0.62878788  0.09272727  0.01909091         LA_NINA            La Nina          La Nina
+12:  0.30545455 -0.77727273 -0.62878788  0.09272727         NEUTRAL            Neutral          La Nina
+13: -0.50121212  0.30545455 -0.77727273 -0.62878788         LA_NINA            La Nina          Neutral
+14: -0.80424242 -0.50121212  0.30545455 -0.77727273         LA_NINA            La Nina          La Nina
+15: -0.05515152 -0.80424242 -0.50121212  0.30545455         NEUTRAL            Neutral          La Nina
+16: -0.23121212 -0.05515152 -0.80424242 -0.50121212         NEUTRAL            Neutral          Neutral
+17:  0.19727273 -0.23121212 -0.05515152 -0.80424242         NEUTRAL            Neutral          Neutral
+18:  1.59636364  0.19727273 -0.23121212 -0.05515152         EL_NINO            El Nino          Neutral
+19:  0.41636364  1.59636364  0.19727273 -0.23121212         NEUTRAL            Neutral          El Nino
+20: -0.16272727  0.41636364  1.59636364  0.19727273         NEUTRAL            Neutral          Neutral
+21:  0.11333333 -0.16272727  0.41636364  1.59636364         NEUTRAL            Neutral          Neutral
+22:  0.57000000  0.11333333 -0.16272727  0.41636364         EL_NINO            El Nino          Neutral
+23: -0.29606061  0.57000000  0.11333333 -0.16272727         NEUTRAL            Neutral          El Nino
+24: -0.65757576 -0.29606061  0.57000000  0.11333333         LA_NINA            La Nina          Neutral
+25: -0.84666667 -0.65757576 -0.29606061  0.57000000         LA_NINA            La Nina          La Nina
+26:  0.93030303 -0.84666667 -0.65757576 -0.29606061         EL_NINO            El Nino          La Nina
+27:  0.43363636  0.93030303 -0.84666667 -0.65757576         NEUTRAL            Neutral          El Nino
+    oni_current   oni_lag1y   oni_lag2y   oni_lag3y enso_phase_plot enso_phase_current enso_phase_lag1y
+    enso_phase_lag2y enso_phase_lag3y year_centered log_population_offset
+              <fctr>           <fctr>         <num>                 <num>
+ 1:          Neutral          Neutral           -13              19.06650
+ 2:          El Nino          Neutral           -12              19.06650
+ 3:          Neutral          El Nino           -11              19.06650
+ 4:          La Nina          Neutral           -10              18.96538
+ 5:          La Nina          La Nina            -9              18.97833
+ 6:          Neutral          La Nina            -8              18.99107
+ 7:          El Nino          Neutral            -7              19.01726
+ 8:          Neutral          El Nino            -6              19.03149
+ 9:          Neutral          Neutral            -5              19.04543
+10:          Neutral          Neutral            -4              19.06650
+11:          Neutral          Neutral            -3              19.06049
+12:          La Nina          Neutral            -2              19.07030
+13:          La Nina          La Nina            -1              19.06681
+14:          Neutral          La Nina             0              19.07528
+15:          La Nina          Neutral             1              19.08309
+16:          La Nina          La Nina             2              19.11898
+17:          Neutral          La Nina             3              19.12758
+18:          Neutral          Neutral             4              19.13583
+19:          Neutral          Neutral             5              19.14378
+20:          El Nino          Neutral             6              19.15142
+21:          Neutral          El Nino             7              19.15543
+22:          Neutral          Neutral             8              19.16332
+23:          Neutral          Neutral             9              19.17094
+24:          El Nino          Neutral            10              19.17829
+25:          Neutral          El Nino            11              19.12911
+26:          La Nina          Neutral            12              19.12911
+27:          La Nina          La Nina            13              19.17485
+    enso_phase_lag2y enso_phase_lag3y year_centered log_population_offset
+
+
+ONI plot dataset:
+Chave: <event_year>
+     year event_year enso_oni_mean enso_oni_sd enso_oni_min enso_oni_max enso_oni_absmax enso_el_nino_months
+    <int>      <int>         <num>       <num>        <num>        <num>           <num>               <int>
+ 1:  1998       1998   -0.10424242  1.47409037   -1.5700000   2.24000000       2.2400000                   4
+ 2:  1999       1999   -1.24303030  0.22490716   -1.6566667  -0.97333333      -1.6566667                   0
+ 3:  2000       2000   -0.84757576  0.37940623   -1.6666667  -0.51333333      -1.6666667                   0
+ 4:  2001       2001   -0.31181818  0.18391643   -0.6800000  -0.07333333      -0.6800000                   0
+ 5:  2002       2002    0.64939394  0.52027945   -0.1500000   1.30666667       1.3066667                   7
+ 6:  2003       2003    0.29575758  0.29844445   -0.1633333   0.91666667       0.9166667                   2
+ 7:  2004       2004    0.47242424  0.20530244    0.1700000   0.70000000       0.7000000                   5
+ 8:  2005       2005    0.01909091  0.47688128   -0.8400000   0.63666667      -0.8400000                   2
+ 9:  2006       2006    0.09272727  0.66540684   -0.8500000   0.94333333       0.9433333                   4
+10:  2007       2007   -0.62878788  0.72016707   -1.5966667   0.65666667      -1.5966667                   1
+11:  2008       2008   -0.77727273  0.51180903   -1.6400000  -0.22666667      -1.6400000                   0
+12:  2009       2009    0.30545455  0.84961726   -0.8466667   1.56333333       1.5633333                   5
+13:  2010       2010   -0.50121212  1.23733879   -1.6433333   1.49666667      -1.6433333                   3
+14:  2011       2011   -0.80424242  0.28403087   -1.3066667  -0.37000000      -1.3066667                   0
+15:  2012       2012   -0.05515152  0.41428215   -0.7233333   0.41333333      -0.7233333                   0
+16:  2013       2013   -0.23121212  0.08298959   -0.3500000  -0.10000000      -0.3500000                   0
+17:  2014       2014    0.19727273  0.36598973   -0.3166667   0.77000000       0.7700000                   3
+18:  2015       2015    1.59636364  0.84320612    0.6066667   2.75333333       2.7533333                  11
+19:  2016       2016    0.41636364  1.25849333   -0.6400000   2.62666667       2.6266667                   4
+20:  2017       2017   -0.16272727  0.43178909   -0.8633333   0.38333333      -0.8633333                   0
+21:  2018       2018    0.11333333  0.65331122   -0.7733333   0.96666667       0.9666667                   4
+22:  2019       2019    0.57000000  0.25696519    0.1866667   0.89000000       0.8900000                   7
+23:  2020       2020   -0.29606061  0.72337146   -1.2033333   0.64333333      -1.2033333                   3
+24:  2021       2021   -0.65757576  0.22031337   -0.9133333  -0.30333333      -0.9133333                   0
+25:  2022       2022   -0.84666667  0.08262364   -0.9666667  -0.71666667      -0.9666667                   0
+26:  2023       2023    0.93030303  0.94292153   -0.5366667   2.06333333       2.0633333                   7
+27:  2024       2024    0.43363636  0.83228528   -0.4133333   1.92666667       1.9266667                   4
+28:  2025       2025   -0.29060606  0.21178510   -0.5533333   0.02333333      -0.5533333                   0
+     year event_year enso_oni_mean enso_oni_sd enso_oni_min enso_oni_max enso_oni_absmax enso_el_nino_months
+    enso_la_nina_months enso_neutral_months enso_months_available enso_dominant_phase enso_any_el_nino
+                  <int>               <int>                 <int>              <char>           <lgcl>
+ 1:                   6                   1                    11             La Nina             TRUE
+ 2:                  11                   0                    11             La Nina            FALSE
+ 3:                  11                   0                    11             La Nina            FALSE
+ 4:                   2                   9                    11             Neutral            FALSE
+ 5:                   0                   4                    11             El Nino             TRUE
+ 6:                   0                   9                    11             Neutral             TRUE
+ 7:                   0                   6                    11             Neutral             TRUE
+ 8:                   2                   7                    11             Neutral             TRUE
+ 9:                   3                   4                    11             El Nino             TRUE
+10:                   6                   4                    11             La Nina             TRUE
+11:                   7                   4                    11             La Nina            FALSE
+12:                   3                   3                    11             El Nino             TRUE
+13:                   7                   1                    11             La Nina             TRUE
+14:                   9                   2                    11             La Nina            FALSE
+15:                   2                   9                    11             Neutral            FALSE
+16:                   0                  11                    11             Neutral            FALSE
+17:                   0                   8                    11             Neutral             TRUE
+18:                   0                   0                    11             El Nino             TRUE
+19:                   3                   4                    11             El Nino             TRUE
+20:                   3                   8                    11             Neutral            FALSE
+21:                   3                   4                    11             El Nino             TRUE
+22:                   0                   4                    11             El Nino             TRUE
+23:                   5                   3                    11             La Nina             TRUE
+24:                   8                   3                    11             La Nina            FALSE
+25:                  11                   0                    11             La Nina            FALSE
+26:                   1                   3                    11             El Nino             TRUE
+27:                   0                   7                    11             Neutral             TRUE
+28:                   3                   8                    11             Neutral            FALSE
+    enso_la_nina_months enso_neutral_months enso_months_available enso_dominant_phase enso_any_el_nino
+    enso_any_la_nina enso_oni_mean_lag1y enso_oni_min_lag1y enso_oni_max_lag1y enso_oni_absmax_lag1y
+              <lgcl>               <num>              <num>              <num>                 <num>
+ 1:             TRUE          1.20848485         -0.5033333         2.40000000             2.4000000
+ 2:             TRUE         -0.10424242         -1.5700000         2.24000000             2.2400000
+ 3:             TRUE         -1.24303030         -1.6566667        -0.97333333            -1.6566667
+ 4:             TRUE         -0.84757576         -1.6666667        -0.51333333            -1.6666667
+ 5:            FALSE         -0.31181818         -0.6800000        -0.07333333            -0.6800000
+ 6:            FALSE          0.64939394         -0.1500000         1.30666667             1.3066667
+ 7:            FALSE          0.29575758         -0.1633333         0.91666667             0.9166667
+ 8:             TRUE          0.47242424          0.1700000         0.70000000             0.7000000
+ 9:             TRUE          0.01909091         -0.8400000         0.63666667            -0.8400000
+10:             TRUE          0.09272727         -0.8500000         0.94333333             0.9433333
+11:             TRUE         -0.62878788         -1.5966667         0.65666667            -1.5966667
+12:             TRUE         -0.77727273         -1.6400000        -0.22666667            -1.6400000
+13:             TRUE          0.30545455         -0.8466667         1.56333333             1.5633333
+14:             TRUE         -0.50121212         -1.6433333         1.49666667            -1.6433333
+15:             TRUE         -0.80424242         -1.3066667        -0.37000000            -1.3066667
+16:            FALSE         -0.05515152         -0.7233333         0.41333333            -0.7233333
+17:            FALSE         -0.23121212         -0.3500000        -0.10000000            -0.3500000
+18:            FALSE          0.19727273         -0.3166667         0.77000000             0.7700000
+19:             TRUE          1.59636364          0.6066667         2.75333333             2.7533333
+20:             TRUE          0.41636364         -0.6400000         2.62666667             2.6266667
+21:             TRUE         -0.16272727         -0.8633333         0.38333333            -0.8633333
+22:            FALSE          0.11333333         -0.7733333         0.96666667             0.9666667
+23:             TRUE          0.57000000          0.1866667         0.89000000             0.8900000
+24:             TRUE         -0.29606061         -1.2033333         0.64333333            -1.2033333
+25:             TRUE         -0.65757576         -0.9133333        -0.30333333            -0.9133333
+26:             TRUE         -0.84666667         -0.9666667        -0.71666667            -0.9666667
+27:            FALSE          0.93030303         -0.5366667         2.06333333             2.0633333
+28:             TRUE          0.43363636         -0.4133333         1.92666667             1.9266667
+    enso_any_la_nina enso_oni_mean_lag1y enso_oni_min_lag1y enso_oni_max_lag1y enso_oni_absmax_lag1y
+    enso_el_nino_months_lag1y enso_la_nina_months_lag1y enso_neutral_months_lag1y enso_oni_mean_lag2y
+                        <int>                     <int>                     <int>               <num>
+ 1:                         7                         1                         3         -0.47515152
+ 2:                         4                         6                         1          1.20848485
+ 3:                         0                        11                         0         -0.10424242
+ 4:                         0                        11                         0         -1.24303030
+ 5:                         0                         2                         9         -0.84757576
+ 6:                         7                         0                         4         -0.31181818
+ 7:                         2                         0                         9          0.64939394
+ 8:                         5                         0                         6          0.29575758
+ 9:                         2                         2                         7          0.47242424
+10:                         4                         3                         4          0.01909091
+11:                         1                         6                         4          0.09272727
+12:                         0                         7                         4         -0.62878788
+13:                         5                         3                         3         -0.77727273
+14:                         3                         7                         1          0.30545455
+15:                         0                         9                         2         -0.50121212
+16:                         0                         2                         9         -0.80424242
+17:                         0                         0                        11         -0.05515152
+18:                         3                         0                         8         -0.23121212
+19:                        11                         0                         0          0.19727273
+20:                         4                         3                         4          1.59636364
+21:                         0                         3                         8          0.41636364
+22:                         4                         3                         4         -0.16272727
+23:                         7                         0                         4          0.11333333
+24:                         3                         5                         3          0.57000000
+25:                         0                         8                         3         -0.29606061
+26:                         0                        11                         0         -0.65757576
+27:                         7                         1                         3         -0.84666667
+28:                         4                         0                         7          0.93030303
+    enso_el_nino_months_lag1y enso_la_nina_months_lag1y enso_neutral_months_lag1y enso_oni_mean_lag2y
+    enso_oni_min_lag2y enso_oni_max_lag2y enso_oni_absmax_lag2y enso_el_nino_months_lag2y
+                 <num>              <num>                 <num>                     <int>
+ 1:         -0.9033333        -0.27333333            -0.9033333                         0
+ 2:         -0.5033333         2.40000000             2.4000000                         7
+ 3:         -1.5700000         2.24000000             2.2400000                         4
+ 4:         -1.6566667        -0.97333333            -1.6566667                         0
+ 5:         -1.6666667        -0.51333333            -1.6666667                         0
+ 6:         -0.6800000        -0.07333333            -0.6800000                         0
+ 7:         -0.1500000         1.30666667             1.3066667                         7
+ 8:         -0.1633333         0.91666667             0.9166667                         2
+ 9:          0.1700000         0.70000000             0.7000000                         5
+10:         -0.8400000         0.63666667            -0.8400000                         2
+11:         -0.8500000         0.94333333             0.9433333                         4
+12:         -1.5966667         0.65666667            -1.5966667                         1
+13:         -1.6400000        -0.22666667            -1.6400000                         0
+14:         -0.8466667         1.56333333             1.5633333                         5
+15:         -1.6433333         1.49666667            -1.6433333                         3
+16:         -1.3066667        -0.37000000            -1.3066667                         0
+17:         -0.7233333         0.41333333            -0.7233333                         0
+18:         -0.3500000        -0.10000000            -0.3500000                         0
+19:         -0.3166667         0.77000000             0.7700000                         3
+20:          0.6066667         2.75333333             2.7533333                        11
+21:         -0.6400000         2.62666667             2.6266667                         4
+22:         -0.8633333         0.38333333            -0.8633333                         0
+23:         -0.7733333         0.96666667             0.9666667                         4
+24:          0.1866667         0.89000000             0.8900000                         7
+25:         -1.2033333         0.64333333            -1.2033333                         3
+26:         -0.9133333        -0.30333333            -0.9133333                         0
+27:         -0.9666667        -0.71666667            -0.9666667                         0
+28:         -0.5366667         2.06333333             2.0633333                         7
+    enso_oni_min_lag2y enso_oni_max_lag2y enso_oni_absmax_lag2y enso_el_nino_months_lag2y
+    enso_la_nina_months_lag2y enso_neutral_months_lag2y enso_oni_mean_lag3y enso_oni_min_lag3y enso_oni_max_lag3y
+                        <int>                     <int>               <num>              <num>              <num>
+ 1:                         3                         8         -0.18848485         -1.0066667         0.96000000
+ 2:                         1                         3         -0.47515152         -0.9033333        -0.27333333
+ 3:                         6                         1          1.20848485         -0.5033333         2.40000000
+ 4:                        11                         0         -0.10424242         -1.5700000         2.24000000
+ 5:                        11                         0         -1.24303030         -1.6566667        -0.97333333
+ 6:                         2                         9         -0.84757576         -1.6666667        -0.51333333
+ 7:                         0                         4         -0.31181818         -0.6800000        -0.07333333
+ 8:                         0                         9          0.64939394         -0.1500000         1.30666667
+ 9:                         0                         6          0.29575758         -0.1633333         0.91666667
+10:                         2                         7          0.47242424          0.1700000         0.70000000
+11:                         3                         4          0.01909091         -0.8400000         0.63666667
+12:                         6                         4          0.09272727         -0.8500000         0.94333333
+13:                         7                         4         -0.62878788         -1.5966667         0.65666667
+14:                         3                         3         -0.77727273         -1.6400000        -0.22666667
+15:                         7                         1          0.30545455         -0.8466667         1.56333333
+16:                         9                         2         -0.50121212         -1.6433333         1.49666667
+17:                         2                         9         -0.80424242         -1.3066667        -0.37000000
+18:                         0                        11         -0.05515152         -0.7233333         0.41333333
+19:                         0                         8         -0.23121212         -0.3500000        -0.10000000
+20:                         0                         0          0.19727273         -0.3166667         0.77000000
+21:                         3                         4          1.59636364          0.6066667         2.75333333
+22:                         3                         8          0.41636364         -0.6400000         2.62666667
+23:                         3                         4         -0.16272727         -0.8633333         0.38333333
+24:                         0                         4          0.11333333         -0.7733333         0.96666667
+25:                         5                         3          0.57000000          0.1866667         0.89000000
+26:                         8                         3         -0.29606061         -1.2033333         0.64333333
+27:                        11                         0         -0.65757576         -0.9133333        -0.30333333
+28:                         1                         3         -0.84666667         -0.9666667        -0.71666667
+    enso_la_nina_months_lag2y enso_neutral_months_lag2y enso_oni_mean_lag3y enso_oni_min_lag3y enso_oni_max_lag3y
+    enso_oni_absmax_lag3y enso_el_nino_months_lag3y enso_la_nina_months_lag3y enso_neutral_months_lag3y
+                    <num>                     <int>                     <int>                     <int>
+ 1:            -1.0066667                         3                         5                         3
+ 2:            -0.9033333                         0                         3                         8
+ 3:             2.4000000                         7                         1                         3
+ 4:             2.2400000                         4                         6                         1
+ 5:            -1.6566667                         0                        11                         0
+ 6:            -1.6666667                         0                        11                         0
+ 7:            -0.6800000                         0                         2                         9
+ 8:             1.3066667                         7                         0                         4
+ 9:             0.9166667                         2                         0                         9
+10:             0.7000000                         5                         0                         6
+11:            -0.8400000                         2                         2                         7
+12:             0.9433333                         4                         3                         4
+13:            -1.5966667                         1                         6                         4
+14:            -1.6400000                         0                         7                         4
+15:             1.5633333                         5                         3                         3
+16:            -1.6433333                         3                         7                         1
+17:            -1.3066667                         0                         9                         2
+18:            -0.7233333                         0                         2                         9
+19:            -0.3500000                         0                         0                        11
+20:             0.7700000                         3                         0                         8
+21:             2.7533333                        11                         0                         0
+22:             2.6266667                         4                         3                         4
+23:            -0.8633333                         0                         3                         8
+24:             0.9666667                         4                         3                         4
+25:             0.8900000                         7                         0                         4
+26:            -1.2033333                         3                         5                         3
+27:            -0.9133333                         0                         8                         3
+28:            -0.9666667                         0                        11                         0
+    enso_oni_absmax_lag3y enso_el_nino_months_lag3y enso_la_nina_months_lag3y enso_neutral_months_lag3y
+    enso_lag_oni_mean_last3m enso_lag_oni_mean_last6m enso_lag_oni_mean_last12m enso_lag_oni_mean_last24m
+                       <num>                    <num>                     <num>                     <num>
+ 1:                2.3744444                2.1277778                1.20848485                0.36666667
+ 2:               -1.4655556               -1.2683333               -0.10424242                0.55212121
+ 3:               -1.4600000               -1.2905556               -1.24303030               -0.67363636
+ 4:               -0.7044444               -0.6211111               -0.84757576               -1.04530303
+ 5:               -0.3155556               -0.2227778               -0.31181818               -0.57969697
+ 6:                1.2177778                1.0522222                0.64939394                0.16878788
+ 7:                0.3288889                0.2550000                0.29575758                0.47257576
+ 8:                0.6722222                0.6383333                0.47242424                0.38409091
+ 9:               -0.5644444               -0.3311111                0.01909091                0.24575758
+10:                0.8833333                0.6000000                0.09272727                0.05590909
+11:               -1.4800000               -1.1461111               -0.62878788               -0.26803030
+12:               -0.5488889               -0.4144444               -0.77727273               -0.70303030
+13:                1.3088889                0.9433333                0.30545455               -0.23590909
+14:               -1.6066667               -1.4611111               -0.50121212               -0.09787879
+15:               -0.9688889               -0.7844444               -0.80424242               -0.65272727
+16:                0.1122222                0.2427778               -0.05515152               -0.42969697
+17:               -0.1288889               -0.2044444               -0.23121212               -0.14318182
+18:                0.6733333                0.4188889                0.19727273               -0.01696970
+19:                2.6244444                2.2583333                1.59636364                0.89681818
+20:               -0.5633333               -0.5133333                0.41636364                1.00636364
+21:               -0.7422222               -0.4072222               -0.16272727                0.12681818
+22:                0.8988889                0.6066667                0.11333333               -0.02469697
+23:                0.5455556                0.3977778                0.57000000                0.34166667
+24:               -1.1322222               -0.8538889               -0.29606061                0.13696970
+25:               -0.8511111               -0.6627778               -0.65757576               -0.47681818
+26:               -0.8344444               -0.8494444               -0.84666667               -0.75212121
+27:                1.9622222                1.6616667                0.93030303                0.04181818
+28:               -0.3077778               -0.1794444                0.43363636                0.68196970
+    enso_lag_oni_mean_last3m enso_lag_oni_mean_last6m enso_lag_oni_mean_last12m enso_lag_oni_mean_last24m
+    enso_lag_oni_sd_last3m enso_lag_oni_sd_last6m enso_lag_oni_sd_last12m enso_lag_oni_sd_last24m
+                     <num>                  <num>                   <num>                   <num>
+ 1:             0.03595264             0.32118300              1.16488565               1.1864772
+ 2:             0.11042007             0.28241616              1.47409037               1.4602169
+ 3:             0.19835434             0.22491892              0.22490716               1.1825691
+ 4:             0.06743996             0.10166758              0.37940623               0.3655027
+ 5:             0.03097191             0.10953268              0.18391643               0.3997882
+ 6:             0.08388705             0.20140249              0.52027945               0.6220843
+ 7:             0.03656552             0.10284292              0.29844445               0.4517385
+ 8:             0.01347151             0.08482007              0.20530244               0.2658180
+ 9:             0.27837491             0.31133167              0.47688128               0.4268355
+10:             0.10392305             0.34521491              0.66540684               0.5661753
+11:             0.12784539             0.40868035              0.72016707               0.7708153
+12:             0.19178499             0.19713128              0.51180903               0.6143969
+13:             0.28139204             0.44586495              0.84961726               0.8806280
+14:             0.06064468             0.22990497              1.23733879               1.1149947
+15:             0.05058912             0.23334921              0.28403087               0.8896725
+16:             0.20689056             0.19834220              0.41428215               0.5168258
+17:             0.02834967             0.09509449              0.08298959               0.3051662
+18:             0.11695203             0.29527138              0.36598973               0.3393378
+19:             0.14131656             0.45807205              0.84320612               0.9565677
+20:             0.09769567             0.12092238              1.25849333               1.2072444
+21:             0.13292995             0.41167634              0.43178909               0.9647817
+22:             0.08275354             0.34850155              0.65331122               0.5585579
+23:             0.13825634             0.19006042              0.25696519               0.5378733
+24:             0.06475023             0.34502442              0.72337146               0.6906970
+25:             0.07581654             0.23048178              0.22031337               0.5536397
+26:             0.11216720             0.09859945              0.08262364               0.1890202
+27:             0.11973737             0.37081742              0.94292153               1.1196554
+28:             0.10188956             0.17437401              0.83228528               0.9043473
+    enso_lag_oni_sd_last3m enso_lag_oni_sd_last6m enso_lag_oni_sd_last12m enso_lag_oni_sd_last24m
+    enso_lag_oni_min_last3m enso_lag_oni_min_last6m enso_lag_oni_min_last12m enso_lag_oni_min_last24m
+                      <num>                   <num>                    <num>                    <num>
+ 1:               2.3333333              1.60000000               -0.5033333               -0.9033333
+ 2:              -1.5700000             -1.57000000               -1.5700000               -1.5700000
+ 3:              -1.6566667             -1.65666667               -1.6566667               -1.6566667
+ 4:              -0.7466667             -0.74666667               -1.6666667               -1.6666667
+ 5:              -0.3500000             -0.35000000               -0.6800000               -1.6666667
+ 6:               1.1400000              0.79000000               -0.1500000               -0.6800000
+ 7:               0.2866667              0.07666667               -0.1633333               -0.1633333
+ 8:               0.6600000              0.47000000                0.1700000               -0.1633333
+ 9:              -0.8400000             -0.84000000               -0.8400000               -0.8400000
+10:               0.7633333              0.10666667               -0.8500000               -0.8500000
+11:              -1.5966667             -1.59666667               -1.5966667               -1.5966667
+12:              -0.7366667             -0.73666667               -1.6400000               -1.6400000
+13:               1.0066667              0.45000000               -0.8466667               -1.6400000
+14:              -1.6433333             -1.64333333               -1.6433333               -1.6433333
+15:              -1.0233333             -1.02333333               -1.3066667               -1.6433333
+16:              -0.1000000             -0.10000000               -0.7233333               -1.3066667
+17:              -0.1566667             -0.35000000               -0.3500000               -0.7233333
+18:               0.5433333              0.10000000               -0.3166667               -0.3500000
+19:               2.4733333              1.56666667                0.6066667               -0.3166667
+20:              -0.6400000             -0.64000000               -0.6400000               -0.6400000
+21:              -0.8633333             -0.86333333               -0.8633333               -0.8633333
+22:               0.8066667              0.13666667               -0.7733333               -0.8633333
+23:               0.3933333              0.18666667                0.1866667               -0.7733333
+24:              -1.2033333             -1.20333333               -1.2033333               -1.2033333
+25:              -0.9133333             -0.91333333               -0.9133333               -1.2033333
+26:              -0.9400000             -0.96666667               -0.9666667               -0.9666667
+27:               1.8300000              1.11666667               -0.5366667               -0.9666667
+28:              -0.4133333             -0.41333333               -0.4133333               -0.5366667
+    enso_lag_oni_min_last3m enso_lag_oni_min_last6m enso_lag_oni_min_last12m enso_lag_oni_min_last24m
+    enso_lag_oni_max_last3m enso_lag_oni_max_last6m enso_lag_oni_max_last12m enso_lag_oni_max_last24m
+                      <num>                   <num>                    <num>                    <num>
+ 1:               2.4000000              2.40000000               2.40000000               2.40000000
+ 2:              -1.3500000             -0.78333333               2.24000000               2.40000000
+ 3:              -1.2600000             -1.09666667              -0.97333333               2.24000000
+ 4:              -0.6266667             -0.51333333              -0.51333333              -0.51333333
+ 5:              -0.2900000             -0.07333333              -0.07333333              -0.07333333
+ 6:               1.3066667              1.30666667               1.30666667               1.30666667
+ 7:               0.3500000              0.35000000               0.91666667               1.30666667
+ 8:               0.6866667              0.70000000               0.70000000               0.91666667
+ 9:              -0.2833333             -0.05666667               0.63666667               0.70000000
+10:               0.9433333              0.94333333               0.94333333               0.94333333
+11:              -1.3433333             -0.55666667               0.65666667               0.94333333
+12:              -0.3533333             -0.22666667              -0.22666667               0.65666667
+13:               1.5633333              1.56333333               1.56333333               1.56333333
+14:              -1.5366667             -1.04666667               1.49666667               1.56333333
+15:              -0.9233333             -0.43333333              -0.37000000               1.49666667
+16:               0.3133333              0.41333333               0.41333333               0.41333333
+17:              -0.1000000             -0.10000000              -0.10000000               0.41333333
+18:               0.7700000              0.77000000               0.77000000               0.77000000
+19:               2.7533333              2.75333333               2.75333333               2.75333333
+20:              -0.4533333             -0.31000000               2.62666667               2.75333333
+21:              -0.6000000              0.19000000               0.38333333               2.62666667
+22:               0.9666667              0.96666667               0.96666667               0.96666667
+23:               0.6633333              0.66333333               0.89000000               0.96666667
+24:              -1.0766667             -0.35666667               0.64333333               0.89000000
+25:              -0.7666667             -0.34666667              -0.30333333               0.64333333
+26:              -0.7166667             -0.71666667              -0.71666667              -0.30333333
+27:               2.0633333              2.06333333               2.06333333               2.06333333
+28:              -0.2100000              0.08333333               1.92666667               2.06333333
+    enso_lag_oni_max_last3m enso_lag_oni_max_last6m enso_lag_oni_max_last12m enso_lag_oni_max_last24m
+    enso_lag_el_nino_months_last3m enso_lag_el_nino_months_last6m enso_lag_el_nino_months_last12m
+                             <int>                          <int>                           <int>
+ 1:                              3                              6                               7
+ 2:                              0                              0                               4
+ 3:                              0                              0                               0
+ 4:                              0                              0                               0
+ 5:                              0                              0                               0
+ 6:                              3                              6                               7
+ 7:                              0                              0                               2
+ 8:                              3                              5                               5
+ 9:                              0                              0                               2
+10:                              3                              4                               4
+11:                              0                              0                               1
+12:                              0                              0                               0
+13:                              3                              5                               5
+14:                              0                              0                               3
+15:                              0                              0                               0
+16:                              0                              0                               0
+17:                              0                              0                               0
+18:                              3                              3                               3
+19:                              3                              6                              11
+20:                              0                              0                               4
+21:                              0                              0                               0
+22:                              3                              4                               4
+23:                              2                              2                               7
+24:                              0                              0                               3
+25:                              0                              0                               0
+26:                              0                              0                               0
+27:                              3                              6                               7
+28:                              0                              0                               4
+    enso_lag_el_nino_months_last3m enso_lag_el_nino_months_last6m enso_lag_el_nino_months_last12m
+    enso_lag_el_nino_months_last24m enso_lag_la_nina_months_last3m enso_lag_la_nina_months_last6m
+                              <int>                          <int>                          <int>
+ 1:                               7                              0                              0
+ 2:                              11                              3                              6
+ 3:                               4                              3                              6
+ 4:                               0                              3                              6
+ 5:                               0                              0                              0
+ 6:                               7                              0                              0
+ 7:                               9                              0                              0
+ 8:                               7                              0                              0
+ 9:                               7                              2                              2
+10:                               6                              0                              0
+11:                               5                              3                              6
+12:                               1                              2                              2
+13:                               5                              0                              0
+14:                               8                              3                              6
+15:                               3                              3                              5
+16:                               0                              0                              0
+17:                               0                              0                              0
+18:                               3                              0                              0
+19:                              14                              0                              0
+20:                              15                              2                              3
+21:                               4                              3                              3
+22:                               4                              0                              0
+23:                              11                              0                              0
+24:                              10                              3                              5
+25:                               3                              3                              4
+26:                               0                              3                              6
+27:                               7                              0                              0
+28:                              11                              0                              0
+    enso_lag_el_nino_months_last24m enso_lag_la_nina_months_last3m enso_lag_la_nina_months_last6m
+    enso_lag_la_nina_months_last12m enso_lag_la_nina_months_last24m enso_lag_neutral_months_last3m
+                              <int>                           <int>                          <int>
+ 1:                               1                               4                              0
+ 2:                               6                               7                              0
+ 3:                              11                              17                              0
+ 4:                              11                              22                              0
+ 5:                               2                              13                              3
+ 6:                               0                               2                              0
+ 7:                               0                               0                              3
+ 8:                               0                               0                              0
+ 9:                               2                               2                              1
+10:                               3                               5                              0
+11:                               6                               9                              0
+12:                               7                              13                              1
+13:                               3                              10                              0
+14:                               7                              10                              0
+15:                               9                              16                              0
+16:                               2                              11                              3
+17:                               0                               2                              3
+18:                               0                               0                              0
+19:                               0                               0                              0
+20:                               3                               3                              1
+21:                               3                               6                              0
+22:                               3                               6                              0
+23:                               0                               3                              1
+24:                               5                               5                              0
+25:                               8                              13                              0
+26:                              11                              19                              0
+27:                               1                              12                              0
+28:                               0                               1                              3
+    enso_lag_la_nina_months_last12m enso_lag_la_nina_months_last24m enso_lag_neutral_months_last3m
+    enso_lag_neutral_months_last6m enso_lag_neutral_months_last12m enso_lag_neutral_months_last24m
+                             <int>                           <int>                           <int>
+ 1:                              0                               3                              11
+ 2:                              0                               1                               4
+ 3:                              0                               0                               1
+ 4:                              0                               0                               0
+ 5:                              6                               9                               9
+ 6:                              0                               4                              13
+ 7:                              6                               9                              13
+ 8:                              1                               6                              15
+ 9:                              4                               7                              13
+10:                              2                               4                              11
+11:                              0                               4                               8
+12:                              4                               4                               8
+13:                              1                               3                               7
+14:                              0                               1                               4
+15:                              1                               2                               3
+16:                              6                               9                              11
+17:                              6                              11                              20
+18:                              3                               8                              19
+19:                              0                               0                               8
+20:                              3                               4                               4
+21:                              3                               8                              12
+22:                              2                               4                              12
+23:                              4                               4                               8
+24:                              1                               3                               7
+25:                              2                               3                               6
+26:                              0                               0                               3
+27:                              0                               3                               3
+28:                              6                               7                              10
+    enso_lag_neutral_months_last6m enso_lag_neutral_months_last12m enso_lag_neutral_months_last24m
+    enso_lag_months_available_last3m enso_lag_months_available_last6m enso_lag_months_available_last12m
+                               <int>                            <int>                             <int>
+ 1:                                3                                6                                11
+ 2:                                3                                6                                11
+ 3:                                3                                6                                11
+ 4:                                3                                6                                11
+ 5:                                3                                6                                11
+ 6:                                3                                6                                11
+ 7:                                3                                6                                11
+ 8:                                3                                6                                11
+ 9:                                3                                6                                11
+10:                                3                                6                                11
+11:                                3                                6                                11
+12:                                3                                6                                11
+13:                                3                                6                                11
+14:                                3                                6                                11
+15:                                3                                6                                11
+16:                                3                                6                                11
+17:                                3                                6                                11
+18:                                3                                6                                11
+19:                                3                                6                                11
+20:                                3                                6                                11
+21:                                3                                6                                11
+22:                                3                                6                                11
+23:                                3                                6                                11
+24:                                3                                6                                11
+25:                                3                                6                                11
+26:                                3                                6                                11
+27:                                3                                6                                11
+28:                                3                                6                                11
+    enso_lag_months_available_last3m enso_lag_months_available_last6m enso_lag_months_available_last12m
+    enso_lag_months_available_last24m enso_lag_dominant_phase_last3m enso_lag_dominant_phase_last6m
+                                <int>                         <char>                         <char>
+ 1:                                22                        El Nino                        El Nino
+ 2:                                22                        La Nina                        La Nina
+ 3:                                22                        La Nina                        La Nina
+ 4:                                22                        La Nina                        La Nina
+ 5:                                22                        Neutral                        Neutral
+ 6:                                22                        El Nino                        El Nino
+ 7:                                22                        Neutral                        Neutral
+ 8:                                22                        El Nino                        El Nino
+ 9:                                22                        La Nina                        Neutral
+10:                                22                        El Nino                        El Nino
+11:                                22                        La Nina                        La Nina
+12:                                22                        La Nina                        Neutral
+13:                                22                        El Nino                        El Nino
+14:                                22                        La Nina                        La Nina
+15:                                22                        La Nina                        La Nina
+16:                                22                        Neutral                        Neutral
+17:                                22                        Neutral                        Neutral
+18:                                22                        El Nino                        El Nino
+19:                                22                        El Nino                        El Nino
+20:                                22                        La Nina                        La Nina
+21:                                22                        La Nina                        La Nina
+22:                                22                        El Nino                        El Nino
+23:                                22                        El Nino                        Neutral
+24:                                22                        La Nina                        La Nina
+25:                                22                        La Nina                        La Nina
+26:                                22                        La Nina                        La Nina
+27:                                22                        El Nino                        El Nino
+28:                                22                        Neutral                        Neutral
+    enso_lag_months_available_last24m enso_lag_dominant_phase_last3m enso_lag_dominant_phase_last6m
+    enso_lag_dominant_phase_last12m enso_lag_dominant_phase_last24m oni_current annual_enso_phase
+                             <char>                          <char>       <num>            <fctr>
+ 1:                         El Nino                         Neutral -0.10424242           NEUTRAL
+ 2:                         La Nina                         El Nino -1.24303030           LA_NINA
+ 3:                         La Nina                         La Nina -0.84757576           LA_NINA
+ 4:                         La Nina                         La Nina -0.31181818           NEUTRAL
+ 5:                         Neutral                         La Nina  0.64939394           EL_NINO
+ 6:                         El Nino                         Neutral  0.29575758           NEUTRAL
+ 7:                         Neutral                         Neutral  0.47242424           NEUTRAL
+ 8:                         Neutral                         Neutral  0.01909091           NEUTRAL
+ 9:                         Neutral                         Neutral  0.09272727           NEUTRAL
+10:                         El Nino                         Neutral -0.62878788           LA_NINA
+11:                         La Nina                         La Nina -0.77727273           LA_NINA
+12:                         La Nina                         La Nina  0.30545455           NEUTRAL
+13:                         El Nino                         La Nina -0.50121212           LA_NINA
+14:                         La Nina                         La Nina -0.80424242           LA_NINA
+15:                         La Nina                         La Nina -0.05515152           NEUTRAL
+16:                         Neutral                         La Nina -0.23121212           NEUTRAL
+17:                         Neutral                         Neutral  0.19727273           NEUTRAL
+18:                         Neutral                         Neutral  1.59636364           EL_NINO
+19:                         El Nino                         El Nino  0.41636364           NEUTRAL
+20:                         El Nino                         El Nino -0.16272727           NEUTRAL
+21:                         Neutral                         Neutral  0.11333333           NEUTRAL
+22:                         El Nino                         Neutral  0.57000000           EL_NINO
+23:                         El Nino                         El Nino -0.29606061           NEUTRAL
+24:                         La Nina                         El Nino -0.65757576           LA_NINA
+25:                         La Nina                         La Nina -0.84666667           LA_NINA
+26:                         La Nina                         La Nina  0.93030303           EL_NINO
+27:                         El Nino                         La Nina  0.43363636           NEUTRAL
+28:                         Neutral                         El Nino -0.29060606           NEUTRAL
+    enso_lag_dominant_phase_last12m enso_lag_dominant_phase_last24m oni_current annual_enso_phase
+
+
+ENSO phase summary, same year:
+   enso_phase_current years
+               <fctr> <int>
+1:            Neutral    15
+2:            El Nino     4
+3:            La Nina     8
+                                                                                 years_list total_cases
+                                                                                     <char>       <num>
+1: 1998, 2001, 2003, 2004, 2005, 2006, 2009, 2012, 2013, 2014, 2016, 2017, 2018, 2020, 2024         681
+2:                                                                   2002, 2015, 2019, 2023         208
+3:                                           1999, 2000, 2007, 2008, 2010, 2011, 2021, 2022         393
+   mean_cases median_cases mean_incidence_100k median_incidence_100k min_incidence_100k max_incidence_100k
+        <num>        <num>               <num>                 <num>              <num>              <num>
+1:     45.400         42.0          0.02322134            0.02036760         0.01528837         0.04822920
+2:     52.000         50.5          0.02626141            0.02559945         0.02331700         0.03052973
+3:     49.125         50.0          0.02533488            0.02621152         0.01640746         0.03511278
+     mean_oni
+        <num>
+1:  0.0789899
+2:  0.9365152
+3: -0.7882955
+
+
+ENSO phase summary, 1-year lag:
+   enso_phase_lag1y years                                                                         years_list
+             <fctr> <int>                                                                             <char>
+1:          Neutral    14 1999, 2002, 2004, 2005, 2006, 2007, 2010, 2013, 2014, 2015, 2017, 2018, 2019, 2021
+2:          El Nino     5                                                       1998, 2003, 2016, 2020, 2024
+3:          La Nina     8                                     2000, 2001, 2008, 2009, 2011, 2012, 2022, 2023
+   total_cases mean_cases median_cases mean_incidence_100k median_incidence_100k min_incidence_100k
+         <num>      <num>        <num>               <num>                 <num>              <num>
+1:         634   45.28571         45.5          0.02313231            0.02444791         0.01528837
+2:         291   58.20000         45.0          0.02937104            0.02543878         0.01983418
+3:         357   44.62500         40.5          0.02316716            0.02052451         0.01598376
+   max_incidence_100k mean_oni_lag1y
+                <num>          <num>
+1:         0.03511278     0.05365801
+2:         0.04822920     0.99090909
+3:         0.03269821    -0.78829545
+
+
+Model summary:
+Chave: <model_name, exposure_label>
+                model_name              exposure_label      model_family  exposure_variable years_used
+                    <char>                      <char>            <char>             <char>      <int>
+ 1: continuous_ONI_current  Annual mean ONI, same year     quasi_poisson        oni_current         27
+ 2: continuous_ONI_current  Annual mean ONI, same year negative_binomial        oni_current         27
+ 3:   continuous_ONI_lag1y Annual mean ONI, 1-year lag     quasi_poisson          oni_lag1y         27
+ 4:   continuous_ONI_lag1y Annual mean ONI, 1-year lag negative_binomial          oni_lag1y         27
+ 5:   continuous_ONI_lag2y Annual mean ONI, 2-year lag     quasi_poisson          oni_lag2y         27
+ 6:   continuous_ONI_lag2y Annual mean ONI, 2-year lag negative_binomial          oni_lag2y         27
+ 7:   continuous_ONI_lag3y Annual mean ONI, 3-year lag     quasi_poisson          oni_lag3y         27
+ 8:   continuous_ONI_lag3y Annual mean ONI, 3-year lag negative_binomial          oni_lag3y         27
+ 9:          phase_current       ENSO phase, same year     quasi_poisson enso_phase_current         27
+10:          phase_current       ENSO phase, same year negative_binomial enso_phase_current         27
+11:            phase_lag1y      ENSO phase, 1-year lag     quasi_poisson   enso_phase_lag1y         27
+12:            phase_lag1y      ENSO phase, 1-year lag negative_binomial   enso_phase_lag1y         27
+13:            phase_lag2y      ENSO phase, 2-year lag     quasi_poisson   enso_phase_lag2y         27
+14:            phase_lag2y      ENSO phase, 2-year lag negative_binomial   enso_phase_lag2y         27
+15:            phase_lag3y      ENSO phase, 3-year lag     quasi_poisson   enso_phase_lag3y         27
+16:            phase_lag3y      ENSO phase, 3-year lag negative_binomial   enso_phase_lag3y         27
+    total_cases_used total_population_used
+               <num>                 <num>
+ 1:             1282            5282290517
+ 2:             1282            5282290517
+ 3:             1282            5282290517
+ 4:             1282            5282290517
+ 5:             1282            5282290517
+ 6:             1282            5282290517
+ 7:             1282            5282290517
+ 8:             1282            5282290517
+ 9:             1282            5282290517
+10:             1282            5282290517
+11:             1282            5282290517
+12:             1282            5282290517
+13:             1282            5282290517
+14:             1282            5282290517
+15:             1282            5282290517
+16:             1282            5282290517
+
+
+ENSO effect terms:
+                model_name              exposure_label      model_family                      term estimate_log
+                    <char>                      <char>            <char>                    <char>        <num>
+ 1: continuous_ONI_current  Annual mean ONI, same year     quasi_poisson               oni_current  0.040941867
+ 2: continuous_ONI_current  Annual mean ONI, same year negative_binomial               oni_current  0.038558285
+ 3:          phase_current       ENSO phase, same year     quasi_poisson enso_phase_currentEl Nino  0.149821486
+ 4:          phase_current       ENSO phase, same year     quasi_poisson enso_phase_currentLa Nina  0.071288431
+ 5:          phase_current       ENSO phase, same year negative_binomial enso_phase_currentEl Nino  0.153543995
+ 6:          phase_current       ENSO phase, same year negative_binomial enso_phase_currentLa Nina  0.077958410
+ 7:   continuous_ONI_lag1y Annual mean ONI, 1-year lag     quasi_poisson                 oni_lag1y  0.157093362
+ 8:   continuous_ONI_lag1y Annual mean ONI, 1-year lag negative_binomial                 oni_lag1y  0.152616905
+ 9:   continuous_ONI_lag2y Annual mean ONI, 2-year lag     quasi_poisson                 oni_lag2y -0.052460997
+10:   continuous_ONI_lag2y Annual mean ONI, 2-year lag negative_binomial                 oni_lag2y -0.049555700
+11:   continuous_ONI_lag3y Annual mean ONI, 3-year lag     quasi_poisson                 oni_lag3y -0.118256850
+12:   continuous_ONI_lag3y Annual mean ONI, 3-year lag negative_binomial                 oni_lag3y -0.118809494
+13:            phase_lag1y      ENSO phase, 1-year lag     quasi_poisson   enso_phase_lag1yEl Nino  0.244474577
+14:            phase_lag1y      ENSO phase, 1-year lag     quasi_poisson   enso_phase_lag1yLa Nina  0.006068902
+15:            phase_lag1y      ENSO phase, 1-year lag negative_binomial   enso_phase_lag1yEl Nino  0.239497635
+16:            phase_lag1y      ENSO phase, 1-year lag negative_binomial   enso_phase_lag1yLa Nina  0.007446823
+17:            phase_lag2y      ENSO phase, 2-year lag     quasi_poisson   enso_phase_lag2yEl Nino -0.034890369
+18:            phase_lag2y      ENSO phase, 2-year lag     quasi_poisson   enso_phase_lag2yLa Nina  0.030991324
+19:            phase_lag2y      ENSO phase, 2-year lag negative_binomial   enso_phase_lag2yEl Nino -0.033444800
+20:            phase_lag2y      ENSO phase, 2-year lag negative_binomial   enso_phase_lag2yLa Nina  0.031951083
+21:            phase_lag3y      ENSO phase, 3-year lag     quasi_poisson   enso_phase_lag3yEl Nino -0.198039301
+22:            phase_lag3y      ENSO phase, 3-year lag     quasi_poisson   enso_phase_lag3yLa Nina  0.040798067
+23:            phase_lag3y      ENSO phase, 3-year lag negative_binomial   enso_phase_lag3yEl Nino -0.198069988
+24:            phase_lag3y      ENSO phase, 3-year lag negative_binomial   enso_phase_lag3yLa Nina  0.043459993
+                model_name              exposure_label      model_family                      term estimate_log
+     std_error   statistic    p_value       irr conf_low_95 conf_high_95
+         <num>       <num>      <num>     <num>       <num>        <num>
+ 1: 0.09556912  0.42840057 0.67217985 1.0417915   0.8638349     1.256409
+ 2: 0.08719617  0.44220160 0.65834333 1.0393113   0.8760377     1.233015
+ 3: 0.17008723  0.88085088 0.38751070 1.1616269   0.8323107     1.621242
+ 4: 0.13391043  0.53235907 0.59958308 1.0738909   0.8259872     1.396198
+ 5: 0.15297744  1.00370354 0.31552153 1.1659591   0.8639056     1.573622
+ 6: 0.11812118  0.65998674 0.50926234 1.0810777   0.8576501     1.362711
+ 7: 0.07851918  2.00070046 0.05685937 1.1701049   1.0032009     1.364777
+ 8: 0.07403557  2.06139965 0.03926493 1.1648786   1.0075354     1.346794
+ 9: 0.09060917 -0.57898110 0.56799673 0.9488913   0.7944899     1.133299
+10: 0.08238518 -0.60151231 0.54749881 0.9516521   0.8097492     1.118423
+11: 0.09313652 -1.26971518 0.21635998 0.8884678   0.7402225     1.066402
+12: 0.08326933 -1.42680970 0.15363475 0.8879769   0.7542606     1.045399
+13: 0.13896079  1.75930621 0.09182331 1.2769502   0.9724967     1.676717
+14: 0.12956996  0.04683881 0.96304603 1.0060874   0.7804472     1.296964
+15: 0.13224231  1.81105144 0.07013289 1.2706107   0.9804954     1.646567
+16: 0.11545861  0.06449777 0.94857388 1.0074746   0.8034406     1.263323
+17: 0.17448055 -0.19996710 0.84326382 0.9657113   0.6860037     1.359465
+18: 0.13456815  0.23030207 0.81989313 1.0314766   0.7923419     1.342784
+19: 0.15477763 -0.21608291 0.82892312 0.9671083   0.7140452     1.309859
+20: 0.12022368  0.26576365 0.79042124 1.0324670   0.8157174     1.306811
+21: 0.17889890 -1.10699002 0.27974199 0.8203376   0.5777112     1.164862
+22: 0.13272154  0.30739598 0.76130817 1.0416417   0.8030517     1.351118
+23: 0.15166599 -1.30596180 0.19156555 0.8203124   0.6093665     1.104282
+24: 0.11956849  0.36347364 0.71625110 1.0444182   0.8262200     1.320241
+     std_error   statistic    p_value       irr conf_low_95 conf_high_95
+                                   interpretation
+                                           <char>
+ 1: IRR per +1.0 unit increase in annual mean ONI
+ 2: IRR per +1.0 unit increase in annual mean ONI
+ 3:               IRR compared with Neutral years
+ 4:               IRR compared with Neutral years
+ 5:               IRR compared with Neutral years
+ 6:               IRR compared with Neutral years
+ 7: IRR per +1.0 unit increase in annual mean ONI
+ 8: IRR per +1.0 unit increase in annual mean ONI
+ 9: IRR per +1.0 unit increase in annual mean ONI
+10: IRR per +1.0 unit increase in annual mean ONI
+11: IRR per +1.0 unit increase in annual mean ONI
+12: IRR per +1.0 unit increase in annual mean ONI
+13:               IRR compared with Neutral years
+14:               IRR compared with Neutral years
+15:               IRR compared with Neutral years
+16:               IRR compared with Neutral years
+17:               IRR compared with Neutral years
+18:               IRR compared with Neutral years
+19:               IRR compared with Neutral years
+20:               IRR compared with Neutral years
+21:               IRR compared with Neutral years
+22:               IRR compared with Neutral years
+23:               IRR compared with Neutral years
+24:               IRR compared with Neutral years
+                                   interpretation
+
+
+Figure log:
+                                                   figure_stem
+                                                        <char>
+1:        24_annual_mean_oni_publication_style_20260630_082804
+2:    24_annual_national_pcm_incidence_and_oni_20260630_082804
+3: 24_national_incidence_by_enso_phase_current_20260630_082804
+4:   24_national_irr_continuous_oni_lag_models_20260630_082804
+5:       24_national_irr_enso_phase_lag_models_20260630_082804
+                                                                                                                                                png_file
+                                                                                                                                                  <char>
+1:        D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/enso_pcm_incidence/figures/24_annual_mean_oni_publication_style_20260630_082804.png
+2:    D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/enso_pcm_incidence/figures/24_annual_national_pcm_incidence_and_oni_20260630_082804.png
+3: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/enso_pcm_incidence/figures/24_national_incidence_by_enso_phase_current_20260630_082804.png
+4:   D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/enso_pcm_incidence/figures/24_national_irr_continuous_oni_lag_models_20260630_082804.png
+5:       D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/enso_pcm_incidence/figures/24_national_irr_enso_phase_lag_models_20260630_082804.png
+                                                                                                                                                pdf_file
+                                                                                                                                                  <char>
+1:        D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/enso_pcm_incidence/figures/24_annual_mean_oni_publication_style_20260630_082804.pdf
+2:    D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/enso_pcm_incidence/figures/24_annual_national_pcm_incidence_and_oni_20260630_082804.pdf
+3: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/enso_pcm_incidence/figures/24_national_incidence_by_enso_phase_current_20260630_082804.pdf
+4:   D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/enso_pcm_incidence/figures/24_national_irr_continuous_oni_lag_models_20260630_082804.pdf
+5:       D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/enso_pcm_incidence/figures/24_national_irr_enso_phase_lag_models_20260630_082804.pdf
+                                                                                                       png_file_outputs
+                                                                                                                 <char>
+1:        D:/DATASUS/pcm_acute_subacute_brazil/outputs/figures/24_annual_mean_oni_publication_style_20260630_082804.png
+2:    D:/DATASUS/pcm_acute_subacute_brazil/outputs/figures/24_annual_national_pcm_incidence_and_oni_20260630_082804.png
+3: D:/DATASUS/pcm_acute_subacute_brazil/outputs/figures/24_national_incidence_by_enso_phase_current_20260630_082804.png
+4:   D:/DATASUS/pcm_acute_subacute_brazil/outputs/figures/24_national_irr_continuous_oni_lag_models_20260630_082804.png
+5:       D:/DATASUS/pcm_acute_subacute_brazil/outputs/figures/24_national_irr_enso_phase_lag_models_20260630_082804.png
+                                                                                                       pdf_file_outputs
+                                                                                                                 <char>
+1:        D:/DATASUS/pcm_acute_subacute_brazil/outputs/figures/24_annual_mean_oni_publication_style_20260630_082804.pdf
+2:    D:/DATASUS/pcm_acute_subacute_brazil/outputs/figures/24_annual_national_pcm_incidence_and_oni_20260630_082804.pdf
+3: D:/DATASUS/pcm_acute_subacute_brazil/outputs/figures/24_national_incidence_by_enso_phase_current_20260630_082804.pdf
+4:   D:/DATASUS/pcm_acute_subacute_brazil/outputs/figures/24_national_irr_continuous_oni_lag_models_20260630_082804.pdf
+5:       D:/DATASUS/pcm_acute_subacute_brazil/outputs/figures/24_national_irr_enso_phase_lag_models_20260630_082804.pdf
+
+
+Interpretation text:
+ENSO and national probable acute/subacute PCM incidence analysis
+===============================================================
+
+This analysis evaluated the association between El Niño/ENSO and annual national incidence of probable acute/subacute paracoccidioidomycosis in Brazil using the common integrated SIM + SIH period 1998-2024.
+
+Important methodological note
+-----------------------------
+ENSO is a year-level climatic exposure. Therefore, the primary analysis was performed at the national annual level rather than by treating municipality-year rows as independent ENSO observations. The corrected v5 analysis uses the full national municipality-year grid and searches broadly for a population file with the greatest municipality-year coverage, rather than relying only on the embedded or restricted denominator file. Counts were modeled with a population offset, and the main models included a linear calendar-year term to reduce confounding by long-term temporal trends. Because the annual time series is short, results should be interpreted as exploratory evidence of association, not as causal proof.
+
+Annual national dataset summary
+-------------------------------
+Years analyzed: 27 (1998-2024)
+Mean municipalities per year: 5570.0
+Total events: 1,282
+Median annual national incidence: 0.0241 per 100,000
+Mean annual national incidence: 0.0243 per 100,000
+
+Main quasi-Poisson estimates
+----------------------------
+Annual mean ONI, same year: IRR 1.042 (95% CI 0.864-1.256), p = 0.6722
+Annual mean ONI, 1-year lag: IRR 1.170 (95% CI 1.003-1.365), p = 0.0569
+El Niño phase, same year versus Neutral: IRR 1.162 (95% CI 0.832-1.621), p = 0.3875
+El Niño phase, 1-year lag versus Neutral: IRR 1.277 (95% CI 0.972-1.677), p = 0.0918
+
+Interpretation guidance
+-----------------------
+If IRR values are above 1, they suggest higher annual incidence during or after warmer ENSO conditions; if below 1, they suggest lower annual incidence. Confidence intervals crossing 1 indicate substantial statistical uncertainty. Lagged ONI models are biologically plausible because PCM clinical records may occur after environmental exposure, infection, disease progression, diagnosis, and hospitalization or death registration.
+
+
+Output folders:
+Analysis folder: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/enso_pcm_incidence 
+Tables: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/enso_pcm_incidence/tables 
+Figures: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/enso_pcm_incidence/figures 
+Data: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/enso_pcm_incidence/data 
+General output tables: D:/DATASUS/pcm_acute_subacute_brazil/outputs/tables 
+General output figures: D:/DATASUS/pcm_acute_subacute_brazil/outputs/figures 

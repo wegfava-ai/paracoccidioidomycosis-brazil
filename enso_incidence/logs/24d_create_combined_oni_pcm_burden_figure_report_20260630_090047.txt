@@ -1,0 +1,48 @@
+============================================================
+24d_create_combined_oni_pcm_burden_figure.R
+============================================================
+Run timestamp: 20260630_090047
+
+Input file
+------------------------------------------------------------
+Annual dataset: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/enso_pcm_incidence/data/enso_pcm_annual_national_dataset_latest.rds
+
+Figure concept
+------------------------------------------------------------
+One single figure combining annual mean ONI with annual PCM burden.
+Top panel: annual mean ONI as bars, colored by ENSO phase.
+Bottom panel: annual PCM cases as bars, colored by the same ENSO phase.
+Bottom panel also shows annual incidence as a black line with a secondary y-axis.
+
+Key settings
+------------------------------------------------------------
+Requested CPU threads: 10
+data.table threads actually used: 10
+Years in the figure: 1998 - 2024
+Total years plotted: 27
+Total PCM cases across all years: 1,282
+Mean annual cases: 47.48
+Median annual cases: 45
+Mean annual incidence per 100,000: 0.0243
+Median annual incidence per 100,000: 0.0241
+Incidence scale factor for the secondary axis: 1621.4243
+
+Saved outputs
+------------------------------------------------------------
+Main PNG: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/enso_pcm_incidence/figures/24d_combined_oni_pcm_burden_figure_20260630_090047.png
+Main PDF: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/enso_pcm_incidence/figures/24d_combined_oni_pcm_burden_figure_20260630_090047.pdf
+Latest PNG: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/enso_pcm_incidence/figures/combined_oni_pcm_burden_figure_latest.png
+Latest PDF: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/enso_pcm_incidence/figures/combined_oni_pcm_burden_figure_latest.pdf
+Figure data CSV: D:/DATASUS/pcm_acute_subacute_brazil/data_processed/models/enso_pcm_incidence/tables/24d_combined_oni_pcm_burden_figure_data_20260630_090047.csv
+
+Additional copies
+------------------------------------------------------------
+Outputs figures folder: D:/DATASUS/pcm_acute_subacute_brazil/outputs/figures
+Publication-ready outputs folder: D:/DATASUS/pcm_acute_subacute_brazil/publication_ready_outputs
+
+Interpretation note
+------------------------------------------------------------
+This figure is descriptive and is designed to unify ENSO phase classification,
+annual ONI magnitude, annual PCM case counts, and annual incidence in a single visual.
+Formal inference about ENSO effects should still rely on the regression models from Script 24.
+============================================================
