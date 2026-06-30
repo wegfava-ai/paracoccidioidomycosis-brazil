@@ -4,7 +4,9 @@
 
 This repository folder contains tables, figures, maps, captions, and manuscript text generated from a validated analytical workflow. The analysis modeled the spatial distribution and future climatic suitability of **probable acute/subacute paracoccidioidomycosis (PCM)** in Brazil using municipality-level administrative health records, environmental predictors, and future climate projections.
 
-**Important interpretation note:** all current and future values shown here are **model-predicted annualized suitability rates per 100,000 inhabitants**. They should not be interpreted as observed incidence or deterministic forecasts of future case counts.
+The central interpretation of the modeling results is **multifactorial**. ENSO-related anomalies may help explain short-term temporal fluctuations in probable acute/subacute PCM incidence, especially when lagged effects are considered. However, ENSO alone does **not** explain the spatial suitability patterns observed in Brazil. Instead, the results support an ecoepidemiological interpretation in which habitat suitability and observed disease occurrence emerge from the interaction between **climatic conditions, soil properties, elevation, land-use patterns, and social or health-system factors** that shape exposure, diagnosis, hospitalization, death registration, and reporting.
+
+**Important interpretation note:** all current and future values shown here are **model-predicted annualized suitability rates per 100,000 inhabitants**. They should not be interpreted as observed incidence, confirmed infection risk, or deterministic forecasts of future case counts.
 
 ## Key outputs
 
@@ -19,6 +21,7 @@ This repository folder contains tables, figures, maps, captions, and manuscript 
 - Top regional increase under SSP585 | 2061-2080: **North; change=0.1382**.
 - Top state-level increase under SSP585 | 2061-2080: **PI; change=0.2570**.
 - Municipalities with very large increase under SSP585 | 2061-2080: **3,424**.
+- Main interpretation: **ENSO is better understood as a temporal climate modulator, not as a standalone determinant of PCM habitat suitability**.
 
 ## Folder structure
 
@@ -35,7 +38,24 @@ github_publication_package/
 
 ## Main modeling results
 
-The BIC-supported model used for current and future suitability projections was the M3 climate-soil-elevation negative binomial model. The AIC-supported full retrospective model was M6, which included ENSO and additional predictor groups. M3 was used for projection because its predictors were suitable for static spatial and future climate analyses, while M6 included temporal ENSO predictors that were not projected under future climate scenarios.
+The BIC-supported model used for current and future suitability projections was the **M3 climate-soil-elevation negative binomial model**. The AIC-supported full retrospective model was **M6**, which included ENSO and additional predictor groups. M3 was used for projection because its predictors were suitable for static spatial and future climate analyses, while M6 included temporal ENSO predictors that were not projected under future climate scenarios.
+
+This distinction is important for interpretation. The better AIC performance of M6 suggests that a broader set of predictors, including temporal climatic variability, improves retrospective fit. In contrast, the stronger BIC support for M3 indicates that a more parsimonious model based on climate, soil, and elevation captures a substantial part of the spatial suitability signal without requiring all retrospective covariates. Therefore, the analysis should not be interpreted as evidence that ENSO alone determines suitability. Rather, ENSO appears to operate as one component of a broader ecoepidemiological system.
+
+In this framework, **habitat suitability for probable acute/subacute PCM is not driven by a single climatic index**. It likely reflects the combined effect of environmental suitability for *Paracoccidioides*, soil and moisture conditions that influence fungal survival and propagule release, land-use and occupational exposure, and health-system factors that determine whether severe cases are diagnosed and captured in administrative databases.
+
+## Critical interpretation of the modeling framework
+
+The modeling results are best interpreted as evidence of **ecoepidemiological suitability**, not as direct measurement of fungal presence or true infection incidence. The outcome combines occurrence of severe or registered probable acute/subacute PCM with the availability of diagnosis and reporting. Therefore, the model reflects the intersection of four major dimensions:
+
+1. **Climatic suitability**, including temperature, humidity-related variables, precipitation regimes, and future bioclimatic changes.
+2. **Edaphic and topographic suitability**, including soil properties, water retention potential, and elevation-related environmental gradients.
+3. **Land-use and exposure processes**, including agricultural expansion, pasture, forest transition zones, soil disturbance, and human contact with potentially contaminated environments.
+4. **Social and health-system detection**, including access to specialized care, hospitalization, diagnostic capacity, mortality registration, and regional surveillance intensity.
+
+ENSO fits into this framework as a **temporal modulator**. ENSO anomalies can alter rainfall, humidity, temperature, and soil-water conditions, which may create short-term windows of increased fungal growth, propagule release, or human exposure. However, these effects are conditional on the underlying environmental and social context. A favorable ENSO phase in an unsuitable area would not necessarily lead to PCM occurrence, whereas an environmentally suitable area may show increased recorded burden after climate anomalies if exposure and diagnostic capture are present.
+
+The future projections should therefore be read as maps of changing **environmental suitability under climate scenarios**, not as forecasts of future clinical case counts. Increases under SSP245 and SSP585 suggest that future climate may expand or intensify conditions resembling those associated with historical PCM occurrence, but actual disease burden will also depend on land-use trajectories, population distribution, exposure patterns, diagnosis, treatment access, and surveillance.
 
 ### Current and future median suitability
 
@@ -84,6 +104,20 @@ The state-level summary highlights federative units with the largest median futu
 </p>
 
 Priority municipalities were ranked using a combined score integrating high future predicted suitability and high absolute increase relative to the current baseline.
+
+## Interpretation of ENSO-related results
+
+The ENSO analysis provides complementary temporal evidence. The retrospective ENSO models indicated weak or uncertain effects for ONI in the same year, but a more consistent positive signal when ONI was lagged by one year. This pattern is biologically plausible because climate anomalies may first affect soil moisture, fungal growth, and propagule release, followed by human exposure, incubation, disease progression, health-care seeking, diagnosis, and administrative registration.
+
+Thus, the ENSO result should be interpreted cautiously:
+
+- ENSO does **not** explain the spatial habitat suitability pattern by itself.
+- Lagged ENSO signals are consistent with a temporal modulation mechanism.
+- ENSO may amplify favorable environmental conditions in already suitable regions.
+- The observed association is exploratory and should not be presented as causal proof.
+- The stronger interpretation is that ENSO is part of a larger network of climatic, edaphic, ecological, land-use, and social determinants.
+
+This interpretation is consistent with previous studies that linked acute/subacute PCM variability to antecedent climate conditions, soil-water storage, humidity, and El Niño-related anomalies. However, the national administrative scale used here is broader and noisier than local clinical series, so the ENSO findings should be framed as external, exploratory support for a multifactorial climate-sensitive hypothesis.
 
 ## Publication-ready maps
 
@@ -221,6 +255,16 @@ This map shows municipality-level categories of future suitability change based 
 - Future projections held soil and elevation constant and replaced current BIOCLIM predictors with CMIP6 ensemble future predictors.
 - Values are model-predicted suitability rates per 100,000 inhabitants and should not be interpreted as observed incidence.
 - M6 included temporal ENSO predictors and was retained as a full retrospective model, but M3 was used for future projections.
+- ENSO should be interpreted as a **temporal modulator of climate-sensitive environmental processes**, not as a standalone determinant of habitat suitability.
+- The model output represents **observed suitability in health information systems**, which combines environmental suitability, exposure, disease severity, access to diagnosis, hospitalization, mortality registration, and surveillance.
+
+## Recommended interpretation
+
+A concise interpretation of the results is:
+
+> The spatial and future suitability of probable acute/subacute PCM in Brazil is not explained by ENSO alone. Instead, the models support a multifactorial ecoepidemiological hypothesis in which climatic suitability, soil properties, elevation, land-use patterns, and social or health-system detection processes jointly shape the observed distribution of cases. ENSO-related anomalies may contribute to short-term temporal fluctuations, particularly with lagged effects, by modulating rainfall, humidity, and soil-water conditions in already suitable areas.
+
+This interpretation is stronger than treating El Niño as a direct cause of PCM. The results suggest that future climate change may increase environmental suitability in several regions, especially under SSP585, but the realized disease burden will depend on ecological exposure pathways and public-health detection capacity.
 
 ## Reproducibility
 
